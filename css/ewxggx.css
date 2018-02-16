@@ -7,27 +7,27 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 }
 
 #overlay {
-    /* background-image: url('http://www.sebastian-pertsch.de/wp-content/uploads/bvg_wifi_map_wlan_karte_2017.png'); */
+    background-image: url('http://www.sebastian-pertsch.de/wp-content/uploads/bvg_wifi_map_wlan_karte_2017.png');
     opacity: 0.2;
     filter: alpha(opacity = 30);
     background-size: contain;
-    height: 465px;
-    width: 640px;
+    height: 930px;
+    width: 1280px;
 
     position: absolute;
     top: 0;
     margin-top: 50px;
 
 }
-/* svg {
+svg {
     height: 930px;
     width: 1280px
-} */
+}
 
-svg {
+/* svg {
     height: 465px;
     width: 640px;
-}
+} */
 .anim {
     margin-top: 50px;
 }
