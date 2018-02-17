@@ -11,8 +11,8 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
     opacity: 0.2;
     filter: alpha(opacity = 30);
     background-size: contain;
-    height: 930px;
-    width: 1280px;
+    height: 465px;
+    width: 640px;
 
     position: absolute;
     top: 0;
@@ -20,8 +20,8 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 
 }
 svg {
-    height: 930px;
-    width: 1280px
+    height: 465px;
+    width: 640px
 }
 
 /* svg {

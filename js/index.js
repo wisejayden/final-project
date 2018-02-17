@@ -14,7 +14,7 @@ $(document).on('mousemove', function(e) {
 //
 
 //
-
+//
 // var pathEls = document.querySelectorAll('path');
 // // var pathEls = document.getElementsByClassName('path1');
 //
