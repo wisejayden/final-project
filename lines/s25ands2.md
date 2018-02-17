@@ -15,6 +15,9 @@ l-189, 0
 l-14, -14
 "
 />
+
+
+
 <path class="osdorfer_str-lichterfelder_ost" stroke="#2f7015" d="
 M431, 737
 l36, -36
