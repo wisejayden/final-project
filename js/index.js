@@ -16,8 +16,8 @@ var pathEls = document.getElementsByClassName('path1');
 
 //
 
-var pathEls = document.querySelectorAll('path');
-
+// var pathEls = document.querySelectorAll('path');
+//
 //
 // for (var i = 0; i < pathEls.length; i++) {
 //   var pathEl = pathEls[i];

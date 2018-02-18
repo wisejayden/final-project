@@ -1,6 +1,9 @@
 <path stroke="#ffffff" d="
 M736.4, 42.5
-l-129.5, 129.5
+l-110.5, 110.5
+M504, 31
+l122, 122
+l-19, 19
 l25, 25
 l175, 0
 l69, 69
@@ -41,6 +44,48 @@ M618, 161
 l57, -57
 "
 />
+
+
+<!-- s85 -->
+
+<path class="wilhelmsruh-schonholz"stroke="#6bff5e" d="
+M504, 31
+l25.5, 25.5
+"
+/>
+<path class="schonholz-wilhelmsruh"stroke="#6bff5e" d="
+M529.5, 56.5
+l-25.5, -25.5
+"
+/>
+<path class="schonholz-wollankstr"stroke="#6bff5e" d="
+M529.5, 56.5
+l60, 60
+"
+/>
+<path class="wollankstr-schonholz"stroke="#6bff5e" d="
+M589.5, 116.5
+l-60, -60
+"
+/>
+<path class="wollankstr-bornholmer_str"stroke="#6bff5e" d="
+M589.5, 116.5
+l36.5, 36.5
+l-8, 8
+"
+/>
+<path class="bornholmer_str-wollankstr"stroke="#6bff5e" d="
+M618, 161
+l8, -8
+l-36.5, -36.5
+"
+/>
+
+
+<!-- S8 -->
+
+
+
 <path class="bornholmer_str-schonhauser_allee"stroke="#6bff5e" d="
 M618, 161
 l-11, 11
