@@ -16,8 +16,14 @@
 
 <body>
     <div class="search-fields">
-        <input id="origin" name="origin" placeholder="origin"></input>
-        <input id="destination" name="destination" placeholder="destination"></input>
+        <div class="origin-container">
+            <input id="origin" name="origin" placeholder="origin"></input>
+            <div id="origin-results"></div>
+        </div>
+        <div class="destination-container">
+            <input id="destination" name="destination" placeholder="destination"></input>
+            <div id="destination-results"></div>
+        </div>
         <i class="search icon"></i>
 
         <button class="button" type="submit" name="button" id="submit">Submit</button>

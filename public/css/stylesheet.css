@@ -72,6 +72,25 @@ svg {
     width: 640px;
 } */
 
+#originResults {
+
+}
+
+#originResults.hidden {
+    display: none;
+}
+#destinationResults {
+
+}
+
+#destinationResults.hidden {
+    display: none;
+}
+div.highlight {
+    background-color: rgb(171, 171, 171);
+    color: rgb(61, 139, 162);
+}
+
 
 html,
 body,
