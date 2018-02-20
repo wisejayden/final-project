@@ -362,8 +362,8 @@ var stations =
         "id": "900000085104",
         "name": "Paracelsus Bad"
     },
-    "S Rathaus Steglitz": {
-        "id": "900000062281",
+    "S+U Rathaus Steglitz": {
+        "id": "900000062202",
         "name": "Rathaus Steglitz"
     },
     "S+U Rathaus Spandau": {
@@ -989,43 +989,58 @@ var stations =
     }
 };
 
-function ParseISO8601(iso)
-{
-	// 0 = whole string
-	// 1 = year
-	// 2 = month
-	// 3 = day
-	// 4 = whole time part
-	// 5 = hour
-	// 6 = minute
-	// 7 = second
-	// 8 = fractional (with dot)
-	// 9 = whole timezone (possibly Z)
-	// 10 = offset sign (+ or -)
-	// 11 = offset hours
-	// 12 = offset minutes (with colon)
-	// 13 = offset minutes
-	_rxISO : /^(\d{4})-(\d\d)-(\d\d)([T ](\d\d):(\d\d):(\d\d)(\.\d+)?(Z|([+-])(\d\d)(:(\d\d))?)?)?$/,
 
-	var r = System.Date._rxISO.exec(iso);
-	if (!r)
-		return new Date(Date.parse(iso));
+const uhlandstrWar = {
+    div: document.getElementsByClassName('uhlandstr-kurfurstendamm'),
+    name: "Uhlandstr",
+    direction: "Warschauer Str."
+};
+const kurfurstendammWar = {
+    div: document.getElementsByClassName('kurfurstendamm-wittenberplatz'),
+    name: "Kurfurstendamm",
+    direction: "Warschauer Str."
 
-	var year = Number(r[1]), month = Number(r[2]) - 1, day = Number(r[3]);
-	if (!r[4])
-		return new Date(year, month, day);
+};
+const wittenbergWar = {
+    div: document.getElementsByClassName('wittenberplatz-nollendorfplatz'),
+    name: "Wittenbergplatz",
+    direction: "Warschauer Str."
 
-	var hour = Number(r[5]), minute = Number(r[6]), second = Number(r[7]);
-	var ms = r[8]? Number((r[8] + "000").substr(1, 3)): 0;
-	if (!r[9])
-		return new Date(year, month, day, hour, minute, second, ms);
+};
+const nollendorWar = {
+    div: document.getElementsByClassName('nollendorfplatz-kurfurstenstr'),
+    name: "Nollendorplatz",
+    direction: "Warschauer Str."
 
-	var oh = r[11]? Number(r[10]) + Number(r[11]): 0;
-	var om = r[13]? Number(r[10]) + Number(r[13]): 0;
-	hour -= oh;
-	minute -= om;
-	return new Date(Date.UTC(year, month, day, hour, minute, second, ms));
-}
+};
+const kurfurstenstrWar = {
+    div: document.getElementsByClassName('kurfurstenstr-gleisdreieck'),
+    name: "Kurfurstenstr",
+    direction: "Warschauer Str."
+
+};
+const gleisdreiWar = {
+    div: document.getElementsByClassName('gleisdreieck-mockernbrucke'),
+    name: "Gleisdreieck",
+    direction: "Warschauer Str."
+
+};
+const mockernWar = {
+    div: document.getElementsByClassName('mockernbrucke-halleches_tor'),
+    name: "Mockernbrucke",
+    direction: "Warschauer Str."
+
+};
+const hallchesWar = {
+    div: document.getElementsByClassName('halleches_tor-prinzenstr'),
+    name: "Halleches Tor",
+    direction: "Warschauer Str."
+
+};
+console.log(uhlandstrWar);
+
+var u1DirUhl;
+var u1DirWar = [uhlandstrWar, kurfurstendammWar, wittenbergWar, nollendorWar, kurfurstenstrWar, gleisdreiWar, mockernWar, hallchesWar]
 
 
 
@@ -1040,9 +1055,38 @@ var originResults = $('#origin-results');
 var destinationResults = $('#destination-results');
 var highlight = $('.highlight');
 var page = $('html');
+var svg = $('svg');
 var singleOriginResult = $('.origin-singleresult');
 var singleDestinationResult = $('.destination-singleresult');
 var singleResult = $('.singleresult');
+var timetableInformation = $('.timetable-information');
+var departureTimesDiv = $('.departure-times');
+var legTimes = $('.leg-times');
+var button = $('button');
+
+// button.on('click', function(e) {
+//     console.log("button click");
+//     console.log(e.target.name);
+//     if(!origin.val()) {
+//         console.log("nothing inside first field");
+//         origin.val(e.target.name);
+//     } else if(origin.val()) {
+//         destination.val(e.target.name);
+//     }
+// });
+
+
+// svg.on('click', function(e) {
+//     console.log("HI@");
+//     e.stopPropagation();
+//     if(origin.val()) {
+//         origin.val('');
+//     } else if(destination.val()) {
+//         destination.val('');
+//     }
+// });
+
+
 
 
 clickOutOfResults(origin, originResults);
@@ -1070,6 +1114,12 @@ function incrementalSearcher (inputField, inputFieldResults) {
         val = val.replace(/ä/gi, 'a');
         val = val.replace(/ß/gi, 'ss');
         val = val.replace(/-/gi, ' ');
+
+        if(!e.target.value) {
+
+            inputFieldResults.empty();
+            return;
+        }
 
 
 
@@ -1184,32 +1234,123 @@ submit.on('click', function() {
         success: function(data) {
             console.log("SUCCESS!");
             var departure = [];
+            // var departureTimes;
+            var departureHtml = '';
+            var legsInfo = [];
+            var legsHtml = '';
 
             for (var i = 0; i < data.length; i++) {
-                departure.push(data[i].departure);
+                departure.push({departure: data[i].departure, legs: data[i].legs});
             }
-            console.log(departure);
+            console.log("log shit", data[0].legs[0].origin.name);
+            console.log("log shit", data[0].legs[0].destination.name);
+            console.log("log shit", data[0].legs[0].departure);
+            console.log("log shit", data[0].legs[0].arrival);
+
+            for (var d = 0; d < departure.length; d++) {
+                console.log(departure[d]);
+                if(departure[d].departure == null) {
+                    departure[d].departure = 'Cancelled'
+                } else {
+                    departure[d].departure = new Date(departure[d].departure).toLocaleTimeString();
+                }
+            }
 
 
-            // for (var d = 0; d < departure.length; d++) {
-            //     //filter and organise
-            //
+            for (var q = 0; q < departure.length; q++) {
+
+                departureHtml +='<div class="departure-times">' + departure[q].departure + '</div>';
+
+                departureHtml += '<div class="leg-times-container hidden">'
+                for (var l = 0; l < departure[q].legs.length; l++) {
+                    var oneLeg = departure[q].legs[l];
+                    if(oneLeg.departure == null) {
+                        oneLeg.departure = 'Cancelled'
+                    } else {
+                        oneLeg.departure = new Date(oneLeg.departure).toLocaleTimeString();
+                        oneLeg.arrival = new Date(oneLeg.arrival).toLocaleTimeString();
+                    }
+
+
+                    departureHtml +='<div class="leg-times">' + oneLeg.origin.name + ' (' + oneLeg.departure + ') to ' + oneLeg.destination.name + ' (' + oneLeg.arrival + ')</div>';
+                }
+                departureHtml += '</div>'
+            }
+            timetableInformation.html(departureHtml);
+
+            var trainLine = departure[0].legs[0].line.name;
+            var trainDirection = departure[0].legs[0].direction;
+            console.log("Log line", departure[0].legs[0].line.name);
+            console.log("Log direction", departure[0].legs[0].direction);
+
+
+            $(".departure-times").on('click', function() {
+                console.log("removing hidden class from legs");
+                $(this).next().removeClass('hidden');
+            });
+
+
+            // if(trainLine == 'U1' && trainDirection == 'S+U Warschauer Str.') {
+            //     console.log("Right direction!");
+            //     for (var key in u1DirWar) {
+            //         if (u1DirWar.hasOwnProperty(key)) {
+            //             console.log("Please animate");
+            //             var animateLine = u1DirWar[key].div;
+            //             console.log("Looking at div", u1DirWar[key].div);
+            //             // var offset = anime.setDashoffset(animateLine);
+            //             // animateLine.setAttribute('stroke-dashoffset', offset);
+            //             anime({
+            //                 targets: animateLine,
+            //                 // strokeDashoffset: [offset, 0],
+            //                 duration: anime.random(1000, 3000),
+            //                 delay: anime.random(0, 2000),
+            //                 loop: true,
+            //                 direction: 'alternate',
+            //                 easing: 'easeInOutSine',
+            //                 autoplay: true
+            //             });
+            //         }
+            //     }
             // }
-            //
-            //
-            // departure.filter('date', (date) => {
-            //     return (new Date(date)).toDateString();
-            // });
-
-            var parsedDeparture = ParseISO8601(departure);
-            console.log("parsedDeparture", parsedDeparture);
-
-
-
-
         }
     });
 });
+//
+// [
+//         0 {line: "u1", destination: "hallches tor", direction: "uhlandstr"},
+//         1 {line: "u6", destination: "mehringdamm", direction: "alt-mariendford"}
+// ];
+//
+//
+// var u1 = [uhlandstrWar, kurfurstendammWar, wittenbergWar, nollendorWar, kurfurstenstrWar, gleisdreiWar, mockernWar, hallchesWar]
+//
+// //Pass the apis resulting legs into function.
+// function makeThemLinesMove([trainLinesAndDirections]) {
+//     var arrayOfLines = [];
+//     for (var i = 0; i < trainLinesAndDirections.length; i++) {
+//         //loop through and source correct line from loop
+//         trainLinesAndDirections[i] ==?
+//
+//         //loop through that array
+//         for (var i = 0; i < u1.length; i++) {
+//             //loop through all objects filtering by direction
+//             for (var key in u1) {
+//                 if (u1.hasOwnProperty(key)) {
+//                     //filter everything after destination and then push to array
+//                     arrayOfLines.push(u1[key].direction);
+//                 }
+//             }
+//         }
+//
+//         //access trainlines[i] equivalent array
+//         //loop through that array and then loop through the object, filtering by direction.
+//     }
+//     //filter array by everythng after destination.
+//     //animate filtered arrays.
+// }
+
+
+
 
 // $(document).on('mousemove', function(e) {
 //     var offsetX = e.offsetX - 174;

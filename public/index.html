@@ -18,17 +18,22 @@
     <div class="search-fields">
         <div class="origin-container">
             <input id="origin" name="origin" placeholder="origin"></input>
-            <div id="origin-results"></div>
+            <div id="origin-results" class="hidden"></div>
         </div>
         <div class="destination-container">
             <input id="destination" name="destination" placeholder="destination"></input>
-            <div id="destination-results"></div>
+            <div id="destination-results" class="hidden"></div>
         </div>
 
         <button class="button" type="submit" name="button" id="submit">Submit</button>
     </div>
 
   <div class="anim">
+
+
+      <!-- <div class="station-buttons">
+          <button type="button" name="S+U Westhafen" id="westhafen" title="Westhafen"></button>
+      </div> -->
       <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 800"><g fill="none" fill-rule="evenodd">
 
 
@@ -3899,33 +3904,107 @@
 
           "
           />
+
+
+
+
+
+
+
+
+
+
+
+
+
           <path class="uhlandstr-kurfurstendamm" stroke="#4eb131" d="
           M349 425
           l21.5,0
 
           "
           />
-          <path class="uhlandstr-kurfurstendamm" stroke="#4eb131" d="
-          M370.5 425
-          l-21.5,0
 
-          "
-          />
-          <path class="uhlandstr-wittenberplatz" stroke="#4eb131" d="
+          <path class="kurfurstendamm-wittenberplatz" stroke="#4eb131" d="
           M370.5 425
           l62.5,0
 
           "
           />
-          <path class="wittenberplatz-uhlandstr" stroke="#4eb131" d="
-          M433 425
-          l-62.5,0
 
-          "
-          />
           <path class="wittenberplatz-nollendorfplatz" stroke="#4eb131" d="
           M433 425
           l28.5,0
+
+          "
+          />
+
+          <path class="nollendorfplatz-kurfurstenstr" stroke="#4eb131" d="
+          M461.5 425
+          l19.5,0
+          "
+          />
+
+          <path class="kurfurstenstr-gleisdreieck" stroke="#4eb131" d="
+          M481 425
+          l24.5,0
+          "
+          />
+
+          <path class="gleisdreieck-mockernbrucke" stroke="#4eb131" d="
+          M505.5 425
+          l65.5,0
+          "
+          />
+
+          <path class="mockernbrucke-halleches_tor" stroke="#4eb131" d="
+          M571, 425
+          l39.5,0
+          "
+          />
+
+          <path class="halleches_tor-prinzenstr" stroke="#4eb131" d="
+          M610.5, 425
+          l49.5,0
+          "
+          />
+
+          <path class="prinzenstr-kottbusser_tor" stroke="#4eb131" d="
+          M660, 425
+          l62.5,0
+          "
+          />
+
+          <path class="kottbusser_tor-gorlitzer_bhf" stroke="#4eb131" d="
+          M722.5, 425
+          l18,0
+          "
+          />
+
+
+          <path class="schlesisches_tor-gorlitzer_bhf" stroke="#4eb131" d="
+          M758.5, 415.5
+          l-9.5, 9.5
+          l-8.5,0
+          "
+          />
+          <path class="schlesisches_tor-warschauer_str" stroke="#4eb131" d="
+          M758.5, 415.5
+          l16.5, -16.5
+          "
+          />
+
+
+
+
+          <path class="kurfurstendamm-uhlandstr" stroke="#4eb131" d="
+          M370.5 425
+          l-21.5,0
+
+          "
+          />
+          <path class="wittenberplatz-kurfurstendamm" stroke="#4eb131" d="
+          M433 425
+          l-62.5,0
 
           "
           />
@@ -3935,19 +4014,9 @@
 
           "
           />
-          <path class="nollendorfplatz-kurfurstenstr" stroke="#4eb131" d="
-          M461.5 425
-          l19.5,0
-          "
-          />
           <path class="kurfurstenstr-nollendorfplatz" stroke="#4eb131" d="
           M481 425
           l-19.5,0
-          "
-          />
-          <path class="kurfurstenstr-gleisdreieck" stroke="#4eb131" d="
-          M481 425
-          l24.5,0
           "
           />
           <path class="gleisdreieck-kurfurstenstr" stroke="#4eb131" d="
@@ -3955,19 +4024,9 @@
           l-24.5,0
           "
           />
-          <path class="gleisdreieck-mockernbrucke" stroke="#4eb131" d="
-          M505.5 425
-          l65.5,0
-          "
-          />
           <path class="mockernbrucke-gleisdreieck" stroke="#4eb131" d="
           M571, 425
           l-65.5,0
-          "
-          />
-          <path class="mockernbrucke-halleches_tor" stroke="#4eb131" d="
-          M571, 425
-          l39.5,0
           "
           />
           <path class="halleches_tor-mockernbrucke" stroke="#4eb131" d="
@@ -3975,29 +4034,14 @@
           l-39.5,0
           "
           />
-          <path class="halleches_tor-prinzenstr" stroke="#4eb131" d="
-          M610.5, 425
-          l49.5,0
-          "
-          />
           <path class="prinzenstr-halleches_tor" stroke="#4eb131" d="
           M660, 425
           l-49.5,0
           "
           />
-          <path class="prinzenstr-kottbusser_tor" stroke="#4eb131" d="
-          M660, 425
-          l62.5,0
-          "
-          />
           <path class="kottbusser_tor-prinzenstr" stroke="#4eb131" d="
           M722.5, 425
           l-62.5,0
-          "
-          />
-          <path class="kottbusser_tor-gorlitzer_bhf" stroke="#4eb131" d="
-          M722.5, 425
-          l18,0
           "
           />
           <path class="gorlitzer_bhf-kottbusser_tor" stroke="#4eb131" d="
@@ -4017,16 +4061,17 @@
           l-8.5,0
           "
           />
-          <path class="schlesisches_tor-warschauer_str" stroke="#4eb131" d="
-          M758.5, 415.5
-          l16.5, -16.5
-          "
-          />
           <path class="warschauer_str-schlesisches_tor" stroke="#4eb131" d="
           M775, 399
           l-16.5, 16.5
           "
           />
+
+
+
+
+
+
 
           <path class="hauptbahnof-bundestag"stroke="#41130b" d="
           M505, 297
@@ -4133,14 +4178,11 @@
 
 
         </g></svg>
-        <!-- <div class="station-buttons">
-            <button type="button" name"westhafen" id="westhafen" title="Westhafen"></button>
-        </div> -->
-        <div id="overlay"></div>
+
 
 </div>
+<div class="timetable-information"></div>
 
-<!-- <div id="overlay"></div> -->
   <script src='js/ymlarg.js'></script>
 
 
