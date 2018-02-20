@@ -1,5 +1,4 @@
 var stations =
-
 {
 
     "U Adenauerplatz": {
@@ -25,7 +24,7 @@ var stations =
     },
     "S Alt-Reinickendorf": {
         "id": "900000085105",
-        "name": "Alt-Reinickendorf"
+        "name": "Alt Reinickendorf"
     },
     "S Anhalter Bahnhof": {
         "id": "900000012101",
@@ -33,11 +32,11 @@ var stations =
     },
     "S Baumschulenweg": {
         "id": "900000191001",
-        "name": "S Baumschulenweg"
+        "name": "Baumschulenweg"
     },
     "S Bellevue": {
         "id": "900000003102",
-        "name": "S Bellevue"
+        "name": "Bellevue"
     },
     "S Beusselstraße": {
         "id": "900000020202",
@@ -81,7 +80,7 @@ var stations =
     },
     "U Dahlem-Dorf": {
         "id": "900000051303",
-        "name": "Dahlem-Dorf"
+        "name": "Dahlem Dorf"
     },
     "S Eichborndamm": {
         "id": "900000096405",
@@ -197,7 +196,7 @@ var stations =
     },
     "S Julius-Leber-Brücke": {
         "id": "900000057104",
-        "name": "Julius-Leber-Brucke"
+        "name": "Julius Leber Brucke"
     },
     "S+U Jungfernheide": {
         "id": "900000020201",
@@ -205,7 +204,7 @@ var stations =
     },
     "S+U Karl-Bonhoeffer-Nervenklinik": {
         "id": "900000096458",
-        "name": "Karl-Bonhoeffer-Nervenklinik"
+        "name": "Karl Bonhoeffer Nervenklinik"
     },
     "S Karlshorst": {
         "id": "900000162001",
@@ -325,7 +324,7 @@ var stations =
     },
     "U Oskar-Helene-Heim": {
         "id": "900000051301",
-        "name": "Oskar-Helene-Heim"
+        "name": "Oskar Helene Heim"
     },
     "S+U Pankow": {
         "id": "900000130002",
@@ -333,7 +332,7 @@ var stations =
     },
     "S Pankow-Heinersdorf": {
         "id": "900000130001",
-        "name": "Pankow-Heinersdorf"
+        "name": "Pankow Heinersdorf"
     },
     "S Pichelsberg": {
         "id": "900000025424",
@@ -361,7 +360,7 @@ var stations =
     },
     "U Paracelsus-Bad": {
         "id": "900000085104",
-        "name": "Paracelsus-Bad"
+        "name": "Paracelsus Bad"
     },
     "S Rathaus Steglitz": {
         "id": "900000062281",
@@ -573,7 +572,7 @@ var stations =
     },
     "U Richard-Wagner-Platz": {
         "id": "900000022202",
-        "name": "Richard-Wagner-Platz"
+        "name": "Richard Wagner Platz"
     },
     "U Bismarckstraße": {
         "id": "900000024201",
@@ -612,7 +611,7 @@ var stations =
         "name": "Mockernbrucke"
     },
     "U Mehringdamm": {
-        "id": "900000017171",
+        "id": "900000017101",
         "name": "Mehringdamm"
     },
     "U Gneisenaustraße": {
@@ -625,7 +624,7 @@ var stations =
     },
     "U Karl-Marx-Straße": {
         "id": "900000078103",
-        "name": "Karl-Marx-Strasse"
+        "name": "Karl Marx Strasse"
     },
     "U Grenzallee": {
         "id": "900000080202",
@@ -637,7 +636,7 @@ var stations =
     },
     "U Britz-Süd": {
         "id": "900000080402",
-        "name": "Britz-Sud"
+        "name": "Britz Sud"
     },
     "U Johannisthaler Chaussee": {
         "id": "900000082202",
@@ -673,7 +672,7 @@ var stations =
     },
     "U Alt-Tegel": {
         "id": "900000089301",
-        "name": "Alt-Tegel"
+        "name": "Alt Tegel"
     },
     "S Attilastraße": {
         "id": "900000068301",
@@ -681,7 +680,7 @@ var stations =
     },
     "U Alt-Tempelhof": {
         "id": "900000068202",
-        "name": "Alt-Tempelhof"
+        "name": "Alt Tempelhof"
     },
     "U Kurfürstenstraße": {
         "id": "900000005201",
@@ -726,7 +725,7 @@ var stations =
     ,
     "U Rosa-Luxemburg-Platz": {
         "id": "900000100016",
-        "name": "Rosa-Luxemburg-Platz"
+        "name": "Rosa Luxemburg Platz"
     },
     "U Hausvogteiplatz": {
         "id": "900000100012",
@@ -742,11 +741,11 @@ var stations =
     },
     "U Mendelssohn-Bartholdy-Park": {
         "id": "900000005252",
-        "name": "Mendelssohn-Bartholdy-Park"
+        "name": "Mendelssohn Bartholdy Park"
     },
     "U Ernst-Reuter-Platz": {
         "id": "900000023101",
-        "name": "Ernst-Reuter-Platz"
+        "name": "Ernst Reuter Platz"
     },
     "U Deutsche Oper": {
         "id": "900000022201",
@@ -754,7 +753,7 @@ var stations =
     },
     "U Sophie-Charlotte-Platz": {
         "id": "900000022101",
-        "name": "Sophie-Charlotte-Platz"
+        "name": "Sophie Charlotte Platz"
     },
     "U Kaiserdamm": {
         "id": "900000026202",
@@ -762,15 +761,15 @@ var stations =
     },
     "U Theodor-Heuss-Platz": {
         "id": "900000026201",
-        "name": "Theodor-Heuss-Platz"
+        "name": "Theodor Heuss Platz"
     },
     "U Neu-Westend": {
         "id": "900000026101",
-        "name": "Neu-Westend"
+        "name": "Neu Westend"
     },
     "U Ruhleben": {
         "id": "900000025202",
-        "nameNeu-Westend": "Ruhleben"
+        "name": "Ruhleben"
     },
     "U Onkel Toms Hütte": {
         "id": "900000050282",
@@ -802,7 +801,7 @@ var stations =
     },
     "U Viktoria-Luise-Platz": {
         "id": "900000055101",
-        "name": "Viktoria-Luise-Platz"
+        "name": "Viktoria Luise Platz"
     },
     "U Schillingstraße": {
         "id": "900000100017",
@@ -826,7 +825,7 @@ var stations =
     },
     "U Biesdorf-Süd": {
         "id": "900000171005",
-        "name": "Biesdorf-Sud"
+        "name": "Biesdorf Sud"
     },
     "U Borsigwerke": {
         "id": "900000088202",
@@ -842,7 +841,7 @@ var stations =
     },
     "U Kurt-Schumacher-Platz": {
         "id": "900000086102",
-        "name": "Kurt-Schumacher-Platz"
+        "name": "Kurt Schumacher Platz"
     },
     "U Afrikanische Straße": {
         "id": "900000011102",
@@ -874,7 +873,11 @@ var stations =
     },
     "U Kochstraße/Checkpoint Charlie": {
         "id": "900000012102",
-        "name": "Kochstrasse/Checkpoint Charlie"
+        "name": "Kochstrasse"
+    },
+    "U Checkpoint Charlie/Kochstraße": {
+        "id": "900000012102",
+        "name": "Checkpoint Charlie"
     },
     "U Platz der Luftbrücke": {
         "id": "900000017102",
@@ -886,7 +889,7 @@ var stations =
     },
     "U Kaiserin-Augusta-Straße": {
         "id": "900000068302",
-        "name": "Kaiserin-Augusta-Strasse"
+        "name": "Kaiserin Augusta Strasse"
     },
     "U Ullsteinstraße": {
         "id": "900000069271",
@@ -898,7 +901,7 @@ var stations =
     },
     "U Alt-Mariendorf": {
         "id": "900000070301",
-        "name": "Alt-Mariendorf"
+        "name": "Alt Mariendorf"
     },
     "U Lindauer Allee": {
         "id": "900000086160",
@@ -906,7 +909,7 @@ var stations =
     },
     "U Franz-Neumann-Platz": {
         "id": "900000085202",
-        "name": "Franz-Neumann-Platz"
+        "name": "Franz Neumann Platz"
     },
     "U Osloer Straße": {
         "id": "900000009272",
@@ -934,7 +937,7 @@ var stations =
     },
     "U Heinrich-Heine-Straße": {
         "id": "900000100008",
-        "name": "Heinrich-Heine-Strasse"
+        "name": "Heinrich Heine Strasse"
     },
     "U Moritzplatz": {
         "id": "900000013101",
@@ -970,11 +973,11 @@ var stations =
     },
     "U Friedrich-Wilhelm-Platz": {
         "id": "900000061102",
-        "name": "Friedrich-Wilhelm-Platz"
+        "name": "Friedrich Wilhelm Platz"
     },
     "U Walther-Schreiber-Platz": {
         "id": "900000061101",
-        "name": "Walther-Schreiber-Platz"
+        "name": "Walther Schreiber Platz"
     },
     "U Schloßstraße": {
         "id": "900000062203",
@@ -983,83 +986,46 @@ var stations =
     "U Bundestag": {
         "id": "900000003254",
         "name": "Blissestrasse"
-    },
-    "U Blissestraße": {
-        "id": "900000041102",
-        "name": "Blissestrasse"
-    },
-    "U Blissestraße": {
-        "id": "900000041102",
-        "name": "Blissestrasse"
-    },
-    "U Blissestraße": {
-        "id": "900000041102",
-        "name": "Blissestrasse"
-    },
-    "U Blissestraße": {
-        "id": "900000041102",
-        "name": "Blissestrasse"
-    },
-    "U Blissestraße": {
-        "id": "900000041102",
-        "name": "Blissestrasse"
-    },
-    "U Blissestraße": {
-        "id": "900000041102",
-        "name": "Blissestrasse"
-    },
-    "U Blissestraße": {
-        "id": "900000041102",
-        "name": "Blissestrasse"
-    },
-    "U Blissestraße": {
-        "id": "900000041102",
-        "name": "Blissestrasse"
-    },
-    "U Blissestraße": {
-        "id": "900000041102",
-        "name": "Blissestrasse"
-    },
-    "U Blissestraße": {
-        "id": "900000041102",
-        "name": "Blissestrasse"
-    },
-    "U Blissestraße": {
-        "id": "900000041102",
-        "name": "Blissestrasse"
-    },
-    "U Blissestraße": {
-        "id": "900000041102",
-        "name": "Blissestrasse"
-    },
-    "U Blissestraße": {
-        "id": "900000041102",
-        "name": "Blissestrasse"
-    },
-    "U Blissestraße": {
-        "id": "900000041102",
-        "name": "Blissestrasse"
-    },
-    "U Blissestraße": {
-        "id": "900000041102",
-        "name": "Blissestrasse"
-    },
-    "U Blissestraße": {
-        "id": "900000041102",
-        "name": "Blissestrasse"
-    },
-    "U Blissestraße": {
-        "id": "900000041102",
-        "name": "Blissestrasse"
-    },
-    "U Blissestraße": {
-        "id": "900000041102",
-        "name": "Blissestrasse"
-    },
-
+    }
 };
 
+function ParseISO8601(iso)
+{
+	// 0 = whole string
+	// 1 = year
+	// 2 = month
+	// 3 = day
+	// 4 = whole time part
+	// 5 = hour
+	// 6 = minute
+	// 7 = second
+	// 8 = fractional (with dot)
+	// 9 = whole timezone (possibly Z)
+	// 10 = offset sign (+ or -)
+	// 11 = offset hours
+	// 12 = offset minutes (with colon)
+	// 13 = offset minutes
+	_rxISO : /^(\d{4})-(\d\d)-(\d\d)([T ](\d\d):(\d\d):(\d\d)(\.\d+)?(Z|([+-])(\d\d)(:(\d\d))?)?)?$/,
 
+	var r = System.Date._rxISO.exec(iso);
+	if (!r)
+		return new Date(Date.parse(iso));
+
+	var year = Number(r[1]), month = Number(r[2]) - 1, day = Number(r[3]);
+	if (!r[4])
+		return new Date(year, month, day);
+
+	var hour = Number(r[5]), minute = Number(r[6]), second = Number(r[7]);
+	var ms = r[8]? Number((r[8] + "000").substr(1, 3)): 0;
+	if (!r[9])
+		return new Date(year, month, day, hour, minute, second, ms);
+
+	var oh = r[11]? Number(r[10]) + Number(r[11]): 0;
+	var om = r[13]? Number(r[10]) + Number(r[13]): 0;
+	hour -= oh;
+	minute -= om;
+	return new Date(Date.UTC(year, month, day, hour, minute, second, ms));
+}
 
 
 
@@ -1082,7 +1048,6 @@ var singleResult = $('.singleresult');
 clickOutOfResults(origin, originResults);
 clickOutOfResults(destination, destinationResults);
 
-
 incrementalSearcher(origin, originResults);
 incrementalSearcher(destination, destinationResults);
 highlightResults(originResults);
@@ -1095,15 +1060,22 @@ keyDownActivity(destination, destinationResults);
 
 
 // var stations = import('./stations.json');
-
+// 8 is = to backspace
 function incrementalSearcher (inputField, inputFieldResults) {
     inputField.on('input', function(e) {
         var val = e.target.value;
-        var matches = [];
 
+        val = val.replace(/ü/gi, 'u');
+        val = val.replace(/ö/gi, 'o');
+        val = val.replace(/ä/gi, 'a');
+        val = val.replace(/ß/gi, 'ss');
+        val = val.replace(/-/gi, ' ');
+
+
+
+        var matches = [];
         for( var key in stations) {
             if(stations[key].name.toLowerCase().indexOf(val.toLowerCase()) == 0) {
-                console.log(stations[key]);
                 matches.push(key);
                 if(matches.length >= 5) {
                     break;
@@ -1111,7 +1083,9 @@ function incrementalSearcher (inputField, inputFieldResults) {
             } else {
                 inputFieldResults.html('No results')
             }
+
         }
+
 
         var result = '';
         for (var i = 0; i < matches.length; i++) {
@@ -1128,37 +1102,29 @@ function clickOutOfResults(inputField, inputFieldResults) {
         inputFieldResults.empty();
     });
 }
-
-
-
-
-
 function highlightResults (inputFieldResults) {
     inputFieldResults.on('mouseover', function(e) {
         $('.highlight').removeClass('highlight');
         $(e.target).addClass('highlight');
     });
 }
-
-
-
 function resultsClick (inputField, inputFieldResults) {
     inputFieldResults.on('mousedown', function(e) {
         inputField.val($(e.target).html());
         inputFieldResults.addClass('hidden');
     });
 }
-
-
 function keyDownActivity(inputField, inputFieldResults) {
-    page.on('keydown', function(e) {
-        console.log("HELLLLOO!");
+    inputField.on('keydown', function(e) {
         singleResult = $('.singleresult');
+
         for (var i = 0; i < singleResult.length; i++) {
             if($(singleResult[i]).hasClass('highlight')) {
                 break;
             }
         }
+
+
         var current = i;
         singleResult.removeClass('highlight');
 
@@ -1179,8 +1145,10 @@ function keyDownActivity(inputField, inputFieldResults) {
         }
         if(e.which == 13) {
             console.log("key 13 - ENTER");
-            inputField.val($(singleResult).html());
-            inputFieldResults.addClass('hidden');
+            inputField.val(singleResult.eq(i).html());
+            // inputFieldResults.addClass('hidden');
+            inputFieldResults.empty();
+
         }
 
     });
@@ -1196,20 +1164,14 @@ function keyDownActivity(inputField, inputFieldResults) {
 submit.on('click', function() {
     var searchOrigin;
     var searchDestination;
-    console.log(searchOrigin, searchDestination);
     for( var key in stations) {
-        // console.log("log stations key", key);
-        // console.log("origins value", origin.val());
-
         if (key == origin.val()) {
-            console.log("Yay");
             searchOrigin = stations[key].id;
         }
         if(key == destination.val()) {
             searchDestination = stations[key].id;
         }
     }
-    console.log(searchOrigin, searchDestination);
 
 
 
@@ -1218,10 +1180,33 @@ submit.on('click', function() {
     $.ajax({
         url: 'https://2.vbb.transport.rest/journeys?from=' + searchOrigin + '&to=' + searchDestination,
         headers: {
-            // Identifier: "Jayden's transportation map"
         },
         success: function(data) {
-            console.log(data);
+            console.log("SUCCESS!");
+            var departure = [];
+
+            for (var i = 0; i < data.length; i++) {
+                departure.push(data[i].departure);
+            }
+            console.log(departure);
+
+
+            // for (var d = 0; d < departure.length; d++) {
+            //     //filter and organise
+            //
+            // }
+            //
+            //
+            // departure.filter('date', (date) => {
+            //     return (new Date(date)).toDateString();
+            // });
+
+            var parsedDeparture = ParseISO8601(departure);
+            console.log("parsedDeparture", parsedDeparture);
+
+
+
+
         }
     });
 });
@@ -1238,7 +1223,7 @@ var pathEls = document.getElementsByClassName('path1');
 //
 
  var pathEls = document.querySelectorAll('path');
-//
+
 //
 // for (var i = 0; i < pathEls.length; i++) {
 //   var pathEl = pathEls[i];
