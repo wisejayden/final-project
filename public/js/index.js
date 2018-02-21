@@ -424,7 +424,7 @@ var stations =
     },
     "S Schönholz": {
         "id": "900000085201",
-        "name": "Schönholz"
+        "name": "Schonholz"
     },
     "S Sonnenallee": {
         "id": "900000077106",
@@ -1232,7 +1232,14 @@ submit.on('click', function() {
                 departureHtml += '</div>'
             }
             timetableInformation.html(departureHtml);
-            var trainLine = departure[0].legs[0].line.name;
+
+            // console.log("LOOK INTO NAME", departure[0].legs[0]);
+            if(departure[0].legs[0].line.name) {
+                var trainLine = departure[0].legs[0].line.name;
+            } else {
+                trainLine = "Walking"
+            }
+            console.log("trainlines", trainLine);
             var trainDirection = departure[0].legs[0].direction;
 
             for (var p = 0; p < departure.length; p++) {

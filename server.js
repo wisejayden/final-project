@@ -10,10 +10,11 @@ const vbb = require('vbb-client')
 app.use(express.static('public'));
 
 app.get('/', function(req, res) {
+    
 });
 
 app.get('/find-route', function(req, res) {
-    
+
 })
 
 
