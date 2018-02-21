@@ -1,4 +1,4 @@
-<!-- S-25 -->
+<!-- S-25/S2 -->
 <path class="path1" stroke="#f7fff4" d="
 M431, 737
 l110, -110
