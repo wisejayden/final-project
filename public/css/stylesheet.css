@@ -7,15 +7,13 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 }
 
 #overlay {
-    /* background-image: url('http://www.sebastian-pertsch.de/wp-content/uploads/bvg_wifi_map_wlan_karte_2017.png'); */
+    background-image: url('http://www.sebastian-pertsch.de/wp-content/uploads/bvg_wifi_map_wlan_karte_2017.png');
     opacity: 0.2;
     filter: alpha(opacity = 30);
     background-size: contain;
-    height: 930.91px;
+    height: 930px;
     /* width: 1745px; */
     width: 1280px;
-
-    height: 100%;
     z-index: 5;
 
     position: absolute;
@@ -24,20 +22,21 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 
 }
 
+
 .anim {
     position: relative;
     width: 70vw;
 }
 svg {
     top: 0;
-    width: 100%;
+    /* width: 100%; */
     /* height: 465px; */
-    /* width: 1280px; */
+    width: 1280px;
     /* width: 1745px; */
     /* height: 100%; */
     /* height: 100vh; */
     /* max-height: 100%; */
-    /* height: 930.91px; */
+    height: 930px;
     /* width: 1280px; */
     position: relative;
 
@@ -97,7 +96,9 @@ svg {
 #destinationResults {
 
 }
-
+.departure-times {
+    cursor: pointer;
+}
 #destinationResults.hidden {
     display: none;
 }
@@ -106,12 +107,15 @@ div.highlight {
     color: rgb(61, 139, 162);
 }
 
-
+.main {
+    display: flex;
+}
 html,
 body,
 header {
 	background-color: #111116; /* Black */
     position: relative;
+    display: inline-block;
 
 }
 

@@ -15,19 +15,8 @@
 </head>
 
 <body>
-    <div class="search-fields">
-        <div class="origin-container">
-            <input id="origin" name="origin" placeholder="origin"></input>
-            <div id="origin-results" class="hidden"></div>
-        </div>
-        <div class="destination-container">
-            <input id="destination" name="destination" placeholder="destination"></input>
-            <div id="destination-results" class="hidden"></div>
-        </div>
 
-        <button class="button" type="submit" name="button" id="submit">Submit</button>
-    </div>
-
+<div class="main">
   <div class="anim">
 
 
@@ -280,10 +269,49 @@
           l-6, -6
           "
           />
-          <path class="ostkreuz-warschauer"  stroke="#e8712e" d="
+          <path class="ostkreuz-noldnerplatz"  stroke="#e8712e" d="
           M876.5, 401
-          l-91.5, 0
-          l-6, -6
+          l31.5, 0
+          l7.5, -7.5
+          "
+          />
+          <path class="noldnerplatz-ostkreuz"  stroke="#e8712e" d="
+          M915.5, 393.5
+          l-7.5, 7.5
+          l-31.5, 0
+          "
+          />
+
+          <path class="noldnerplatz-lichtenberg"  stroke="#e8712e" d="
+          M915.5, 393.5
+          l22.5, -22.5
+          "
+          />
+          <path class="lichtenberg-noldnerplatz"  stroke="#e8712e" d="
+          M938, 371
+          l-22.5, 22.5
+          "
+          />
+          <path class="lichtenberg-friedrichsfelde_ost"  stroke="#e8712e" d="
+          M938, 371
+          l25.5, -25.5
+          l18, 0
+          "
+          />
+          <path class="friedrichsfelde_ost-lichtenberg"  stroke="#e8712e" d="
+          M981.5, 345.5
+          l-18, 0
+          l-25.5, 25.5
+          "
+          />
+          <path class="friedrichsfelde_ost-biesdorf"  stroke="#e8712e" d="
+          M981.5, 345.5
+          l64, 0
+          "
+          />
+          <path class="biesdorf-friedrichsfelde_ost"  stroke="#e8712e" d="
+          M1045.5, 345.5
+          l-64, 0
           "
           />
 
@@ -3904,6 +3932,38 @@
 
           "
           />
+          <path class="aldershof-grunau" stroke="#ad781e" d="
+          M1009, 620
+          l38, 38
+          "
+          />
+          <path class="grunau-aldershof" stroke="#ad781e" d="
+          M1047, 658
+          l-38, -38
+          "
+          />
+          <path class="schoneweide-oberspree" stroke="#ad781e" d="
+          M964.5, 575.5
+          l8, 8
+          l31, 0
+          "
+          />
+          <path class="oberspree-schoneweide" stroke="#ad781e" d="
+          M1003.5, 583.5
+          l-31, 0
+          l-8, -8
+          "
+          />
+          <path class="oberspree-spindlersfeld" stroke="#ad781e" d="
+          M1003.5, 583.5
+          l39, 0
+          "
+          />
+          <path class="spindlersfeld-oberspree" stroke="#ad781e" d="
+          M1042.5, 583.5
+          l-39, 0
+          "
+          />
 
 
 
@@ -4181,7 +4241,21 @@
 
 
 </div>
+<div class="search-fields">
+    <div class="origin-container">
+        <input id="origin" name="origin" placeholder="origin"></input>
+        <div id="origin-results" class="hidden"></div>
+    </div>
+    <div class="destination-container">
+        <input id="destination" name="destination" placeholder="destination"></input>
+        <div id="destination-results" class="hidden"></div>
+    </div>
+
+    <button class="button" type="submit" name="button" id="submit">Submit</button>
+</div>
 <div class="timetable-information"></div>
+</div>
+<div id="overlay"></div>
 
   <script src='js/ymlarg.js'></script>
 

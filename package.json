@@ -6,7 +6,6 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
-    "moment": "^2.20.1",
     "vbb-client": "^3.0.1",
     "vbb-stations": "^6.2.1"
   },

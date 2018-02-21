@@ -1253,6 +1253,8 @@ submit.on('click', function() {
                     departure[d].departure = 'Cancelled'
                 } else {
                     departure[d].departure = new Date(departure[d].departure).toLocaleTimeString();
+                    departure[d].departure = departure[d].departure.slice(0, -3);
+
                 }
             }
 
@@ -1264,15 +1266,16 @@ submit.on('click', function() {
                 departureHtml += '<div class="leg-times-container hidden">'
                 for (var l = 0; l < departure[q].legs.length; l++) {
                     var oneLeg = departure[q].legs[l];
-                    if(oneLeg.departure == null) {
-                        oneLeg.departure = 'Cancelled'
-                    } else {
+                    console.log("HELLLOOO");
+                    if(departure[q] != null) {
+                        console.log("departure not null!");
                         oneLeg.departure = new Date(oneLeg.departure).toLocaleTimeString();
+                        oneLeg.departure = oneLeg.departure.slice(0, -3);
                         oneLeg.arrival = new Date(oneLeg.arrival).toLocaleTimeString();
+                        oneLeg.arrival = oneLeg.arrival.slice(0, -3);
+
+                        departureHtml +='<div class="leg-times">' + oneLeg.origin.name + ' (' + oneLeg.departure + ') to ' + oneLeg.destination.name + ' (' + oneLeg.arrival + ')</div>';
                     }
-
-
-                    departureHtml +='<div class="leg-times">' + oneLeg.origin.name + ' (' + oneLeg.departure + ') to ' + oneLeg.destination.name + ' (' + oneLeg.arrival + ')</div>';
                 }
                 departureHtml += '</div>'
             }
@@ -1283,35 +1286,47 @@ submit.on('click', function() {
             console.log("Log line", departure[0].legs[0].line.name);
             console.log("Log direction", departure[0].legs[0].direction);
 
+            var clicked = false;
 
             $(".departure-times").on('click', function() {
                 console.log("removing hidden class from legs");
-                $(this).next().removeClass('hidden');
+                if(clicked === true) {
+                    console.log("Trying to hide");
+                    $(this).next().addClass('hidden');
+                    clicked = false;
+                } else {
+                    console.log("Trying to show");
+
+                    $(this).next().removeClass('hidden');
+                    clicked = true;
+
+                }
             });
 
 
-            // if(trainLine == 'U1' && trainDirection == 'S+U Warschauer Str.') {
-            //     console.log("Right direction!");
-            //     for (var key in u1DirWar) {
-            //         if (u1DirWar.hasOwnProperty(key)) {
-            //             console.log("Please animate");
-            //             var animateLine = u1DirWar[key].div;
-            //             console.log("Looking at div", u1DirWar[key].div);
-            //             // var offset = anime.setDashoffset(animateLine);
-            //             // animateLine.setAttribute('stroke-dashoffset', offset);
-            //             anime({
-            //                 targets: animateLine,
-            //                 // strokeDashoffset: [offset, 0],
-            //                 duration: anime.random(1000, 3000),
-            //                 delay: anime.random(0, 2000),
-            //                 loop: true,
-            //                 direction: 'alternate',
-            //                 easing: 'easeInOutSine',
-            //                 autoplay: true
-            //             });
-            //         }
-            //     }
-            // }
+
+            if(trainLine == 'U1' && trainDirection == 'S+U Warschauer Str.') {
+                console.log("Right direction!");
+                for (var key in u1DirWar) {
+                    if (u1DirWar.hasOwnProperty(key)) {
+                        console.log("Please animate");
+                        var animateLine = u1DirWar[key].div[0];
+                        console.log("Looking at div", animateLine[0]);
+                        var offset = anime.setDashoffset(animateLine);
+                        animateLine.setAttribute('stroke-dashoffset', offset);
+                        anime({
+                            targets: animateLine,
+                            strokeDashoffset: [offset, 0],
+                            duration: anime.random(1000, 3000),
+                            delay: anime.random(0, 2000),
+                            loop: true,
+                            direction: 'alternate',
+                            easing: 'easeInOutSine',
+                            autoplay: true
+                        });
+                    }
+                }
+            }
         }
     });
 });
@@ -1363,10 +1378,11 @@ var pathEls = document.getElementsByClassName('path1');
 
 //
 
- var pathEls = document.querySelectorAll('path');
-
+//  var pathEls = document.querySelectorAll('path');
 //
 // for (var i = 0; i < pathEls.length; i++) {
+//     console.log("pathels", pathEls[i]);
+//
 //   var pathEl = pathEls[i];
 //   var offset = anime.setDashoffset(pathEl);
 //   pathEl.setAttribute('stroke-dashoffset', offset);
