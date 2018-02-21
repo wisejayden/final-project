@@ -988,111 +988,16 @@ var stations =
         "name": "Blissestrasse"
     }
 };
-const uhlandstrWar = {
-    div: $('.uhlandstr-kurfurstendamm'),
-    name: "Uhlandstr",
-    direction: "Warschauer Str."
-};
-const kurfurstendammWar = {
-    div: $('.kurfurstendamm-wittenberplatz'),
-    name: "Kurfurstendamm",
-    direction: "Warschauer Str."
-
-};
-const wittenbergWar = {
-    div: $('.wittenberplatz-nollendorfplatz'),
-    name: "Wittenbergplatz",
-    direction: "Warschauer Str."
-
-};
-const nollendorWar = {
-    div: $('.nollendorfplatz-kurfurstenstr'),
-    name: "Nollendorplatz",
-    direction: "Warschauer Str."
-
-};
-const kurfurstenstrWar = {
-    div: $('.kurfurstenstr-gleisdreieck'),
-    name: "Kurfurstenstr",
-    direction: "Warschauer Str."
-
-};
-const gleisdreiWar = {
-    div: $('.gleisdreieck-mockernbrucke'),
-    name: "Gleisdreieck",
-    direction: "Warschauer Str."
-
-};
-const mockernWar = {
-    div: $('.mockernbrucke-halleches_tor'),
-    name: "Mockernbrucke",
-    direction: "Warschauer Str."
-
-};
-const hallchesWar = {
-    div: $('.halleches_tor-prinzenstr'),
-    name: "Halleches Tor",
-    direction: "Warschauer Str."
-
-};
 
 
 
 
-
-// const uhlandstrWar = {
-//     div: document.getElementsByClassName('uhlandstr-kurfurstendamm'),
-//     name: "Uhlandstr",
-//     direction: "Warschauer Str."
-// };
-// const kurfurstendammWar = {
-//     div: document.getElementsByClassName('kurfurstendamm-wittenberplatz'),
-//     name: "Kurfurstendamm",
-//     direction: "Warschauer Str."
 //
-// };
-// const wittenbergWar = {
-//     div: document.getElementsByClassName('wittenberplatz-nollendorfplatz'),
-//     name: "Wittenbergplatz",
-//     direction: "Warschauer Str."
 //
-// };
-// const nollendorWar = {
-//     div: document.getElementsByClassName('nollendorfplatz-kurfurstenstr'),
-//     name: "Nollendorplatz",
-//     direction: "Warschauer Str."
+// var u1DirUhl;
+// var u1DirWar = [uhlandstrWar, kurfurstendammWar, wittenbergWar, nollendorWar, kurfurstenstrWar, gleisdreiWar, mockernWar, hallchesWar]
 //
-// };
-// const kurfurstenstrWar = {
-//     div: document.getElementsByClassName('kurfurstenstr-gleisdreieck'),
-//     name: "Kurfurstenstr",
-//     direction: "Warschauer Str."
 //
-// };
-// const gleisdreiWar = {
-//     div: document.getElementsByClassName('gleisdreieck-mockernbrucke'),
-//     name: "Gleisdreieck",
-//     direction: "Warschauer Str."
-//
-// };
-// const mockernWar = {
-//     div: document.getElementsByClassName('mockernbrucke-halleches_tor'),
-//     name: "Mockernbrucke",
-//     direction: "Warschauer Str."
-//
-// };
-// const hallchesWar = {
-//     div: document.getElementsByClassName('halleches_tor-prinzenstr'),
-//     name: "Halleches Tor",
-//     direction: "Warschauer Str."
-//
-// };
-console.log(uhlandstrWar);
-
-var u1DirUhl;
-var u1DirWar = [uhlandstrWar, kurfurstendammWar, wittenbergWar, nollendorWar, kurfurstenstrWar, gleisdreiWar, mockernWar, hallchesWar]
-
-
 
 
 
@@ -1292,13 +1197,12 @@ submit.on('click', function() {
             for (var i = 0; i < data.length; i++) {
                 departure.push({departure: data[i].departure, legs: data[i].legs});
             }
-            console.log("log shit", data[0].legs[0].origin.name);
-            console.log("log shit", data[0].legs[0].destination.name);
-            console.log("log shit", data[0].legs[0].departure);
-            console.log("log shit", data[0].legs[0].arrival);
+            console.log(data[0].legs[0].origin.name);
+            // console.log("log shit", data[0].legs[0].destination.name);
+            // console.log("log shit", data[0].legs[0].departure);
+            // console.log("log shit", data[0].legs[0].arrival);
 
             for (var d = 0; d < departure.length; d++) {
-                console.log(departure[d]);
                 if(departure[d].departure == null) {
                     departure[d].departure = 'Cancelled'
                 } else {
@@ -1316,9 +1220,7 @@ submit.on('click', function() {
                 departureHtml += '<div class="leg-times-container hidden">'
                 for (var l = 0; l < departure[q].legs.length; l++) {
                     var oneLeg = departure[q].legs[l];
-                    console.log("HELLLOOO");
                     if(departure[q] != null) {
-                        console.log("departure not null!");
                         oneLeg.departure = new Date(oneLeg.departure).toLocaleTimeString();
                         oneLeg.departure = oneLeg.departure.slice(0, -3);
                         oneLeg.arrival = new Date(oneLeg.arrival).toLocaleTimeString();
@@ -1330,11 +1232,17 @@ submit.on('click', function() {
                 departureHtml += '</div>'
             }
             timetableInformation.html(departureHtml);
-
             var trainLine = departure[0].legs[0].line.name;
             var trainDirection = departure[0].legs[0].direction;
-            console.log("Log line", departure[0].legs[0].line.name);
-            console.log("Log direction", departure[0].legs[0].direction);
+
+            for (var p = 0; p < departure.length; p++) {
+                if(departure[p].legs[0].direction) {
+                    console.log("all the different directions", departure[p].legs[0].direction);
+                    console.log("And the attached lines", departure[p].legs[0].line.name);
+                }
+
+            }
+
 
             var clicked = false;
 
@@ -1354,30 +1262,30 @@ submit.on('click', function() {
 
 
 
-            if(trainLine == 'U1' && trainDirection == 'S+U Warschauer Str.') {
-                console.log("Right direction!");
-                for (var key in u1DirWar) {
-                    if (u1DirWar.hasOwnProperty(key)) {
-                        console.log("Please animate");
-                        var animateLine = u1DirWar[key].div[0];
-
-                        animateLine.classList.remove('hide');
-                        console.log("Looking at div", animateLine);
-                        var offset = anime.setDashoffset(animateLine);
-                        animateLine.setAttribute('stroke-dashoffset', offset);
-                        anime({
-                            targets: animateLine,
-                            strokeDashoffset: [offset, 0],
-                            duration: anime.random(1000, 2000),
-                            delay: anime.random(0, 1000),
-                            loop: true,
-                            direction: 'alternate',
-                            easing: 'easeInOutSine',
-                            autoplay: true
-                        });
-                    }
-                }
-            }
+            // if(trainLine == 'U1' && trainDirection == 'S+U Warschauer Str.') {
+            //     console.log("Right direction!");
+            //     for (var key in u1DirWar) {
+            //         if (u1DirWar.hasOwnProperty(key)) {
+            //             console.log("Please animate");
+            //             var animateLine = u1DirWar[key].div[0];
+            //
+            //             animateLine.classList.remove('hide');
+            //             console.log("Looking at div", animateLine);
+            //             var offset = anime.setDashoffset(animateLine);
+            //             animateLine.setAttribute('stroke-dashoffset', offset);
+            //             anime({
+            //                 targets: animateLine,
+            //                 strokeDashoffset: [offset, 0],
+            //                 duration: anime.random(1000, 2000),
+            //                 delay: anime.random(0, 1000),
+            //                 loop: true,
+            //                 direction: 'alternate',
+            //                 easing: 'easeInOutSine',
+            //                 autoplay: true
+            //             });
+            //         }
+            //     }
+            // }
         }
     });
 });

@@ -8,7 +8,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 /* <div id="overlay"></div> */
 
 #overlay {
-    background-image: url('http://www.sebastian-pertsch.de/wp-content/uploads/bvg_wifi_map_wlan_karte_2017.png');
+    /* background-image: url('http://www.sebastian-pertsch.de/wp-content/uploads/bvg_wifi_map_wlan_karte_2017.png'); */
     /* background-image: url('https://theurbangeographer.files.wordpress.com/2011/12/mapa-berlin-web.jpeg'); */
 
     opacity: 0.1;
@@ -32,10 +32,10 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 }
 svg {
     top: 0;
-    /* width: 100%; */
+    width: 100%;
     /* height: 930px; */
-    height: 930px;
-    width: 1280px;
+    /* height: 930px; */
+    /* width: 1280px; */
     /* width: 1745px; */
     /* height: 100%; */
     /* height: 100vh; */
