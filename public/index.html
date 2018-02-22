@@ -10,11 +10,15 @@
   <link rel='stylesheet prefetch' href='css/stylesheet.css'>
 
       <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 </head>
 
 <body>
+
+
+
 
 <div class="main">
   <div class="anim">
@@ -1858,6 +1862,8 @@
 
 
 
+
+          <!-- U2 -->
           <path class="ind ruhleben-olympia_stadion" stroke="#c2591f" d="
           M112, 280
           l24.5, 24.5
@@ -3024,12 +3030,16 @@
           "
           />
 
+
+          <!-- u6 -->
           <path class="ind alt_tegel-borsigwerke" stroke="#634688" d="
           M318, 34
           l11, 11
 
           "
           />
+
+
           <path class="ind borsigwerke-alt_tegel" stroke="#634688" d="
           M329, 45
           l-11, -11
@@ -3199,11 +3209,7 @@
           l0, 22.5
           "
           />
-          <path class="ind franzosische_str-stadtmitte" stroke="#634688" d="
-          M610, 356
-          l0, 22.5
-          "
-          />
+
           <path class="ind stadtmitte-franzosische_str" stroke="#634688" d="
           M610, 378.5
           l0, -22.5
@@ -3319,6 +3325,8 @@
           l0, -16.5
           "
           />
+
+
           <path class="ind nollendorfplatz-wittenbergplatz"stroke="#3fc4e2" d="
           M462, 428
           l-29, 0
@@ -3462,6 +3470,9 @@
           "
           />
 
+
+
+          <!-- u7 -->
           <path class="ind rathaus_spandau-altstadt_spandau"stroke="#3c62c6" d="
           M29, 229
           l17, -17
@@ -3887,6 +3898,8 @@
           l-18.5, -18.5
           "
           />
+
+
           <path class="ind alexanderplatz-schillingstr"stroke="#5b2525" d="
           M702, 307
           l2, -2
@@ -4536,7 +4549,7 @@
 
 
 
-
+          <!-- U1 -->
 
           <path class="ind uhlandstr-kurfurstendamm" stroke="#4eb131" d="
           M349 425
@@ -4600,14 +4613,14 @@
           l18,0
           "
           />
-
-
-          <path class="ind schlesisches_tor-gorlitzer_bhf" stroke="#4eb131" d="
-          M758.5, 415.5
-          l-9.5, 9.5
-          l-8.5,0
+          <path class="ind gorlitzer_bhf-schlesisches_tor" stroke="#4eb131" d="
+          M740.5, 425
+          l8.5,0
+          l9.5, -9.5
           "
           />
+
+
           <path class="ind schlesisches_tor-warschauer_str" stroke="#4eb131" d="
           M758.5, 415.5
           l16.5, -16.5
@@ -4670,12 +4683,9 @@
           l-18,0
           "
           />
-          <path class="ind gorlitzer_bhf-schlesisches_tor" stroke="#4eb131" d="
-          M740.5, 425
-          l8.5,0
-          l9.5, -9.5
-          "
-          />
+
+
+
           <path class="ind schlesisches_tor-gorlitzer_bhf" stroke="#4eb131" d="
           M758.5, 415.5
           l-9.5, 9.5
@@ -4717,6 +4727,9 @@
           l-26, -26
           "
           />
+
+
+
           <path class="ind nollendorfplatz-viktoria_luise_platz"stroke="#dee23f" d="
           M462, 435.5
           l-24, 0
@@ -4805,18 +4818,22 @@
 </div>
 <div class="search-fields">
     <div class="origin-container">
-        <input id="origin" name="origin" placeholder="origin"></input>
+        <p>Origin</p>
+        <input id="origin" name="origin" placeholder=""></input>
         <div id="origin-results" class="hidden"></div>
     </div>
     <div class="destination-container">
-        <input id="destination" name="destination" placeholder="destination"></input>
+        <p>Destination</p>
+        <input id="destination" name="destination" placeholder=""></input>
         <div id="destination-results" class="hidden"></div>
     </div>
-
-    <button class="button" type="submit" name="button" id="submit">Submit</button>
+    <button class="button" type="submit" name="button" id="submit">Submit <i class="fa fa-train"></i></button>
+    <!-- <button class="button" type="submit" name="button" id="submit">Submit</button> -->
 </div>
 <div class="timetable-information"></div>
 </div>
+
+
 
   <script src='js/ymlarg.js'></script>
 

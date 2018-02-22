@@ -298,8 +298,8 @@ var stations =
         "id": "900000056102",
         "name": "Nollendorfplatz"
     },
-    "S Olympiastadion": {
-        "id": "900000025321",
+    "U Olympia-Stadion": {
+        "id": "900000025203",
         "name": "Olympiastadion"
     },
     "S Oranienburger Straße": {
@@ -986,16 +986,21 @@ var stations =
     "U Bundestag": {
         "id": "900000003254",
         "name": "Blissestrasse"
+    },
+    "U Altstadt Spandau": {
+        "id": "900000029301",
+        "name": "Altstadt Spandau"
+    },
+    "U Jakob-Kaiser-Platz": {
+        "id": "900000018101",
+        "name": "Jakob-Kaiser-Platz"
     }
 };
 
 
 
-
 // $( document ).ready()
 console.log("Trying to log from other js file", allStationLines);
-
-
 
 
 
@@ -1065,7 +1070,6 @@ keyDownActivity(destination, destinationResults);
 
 
 
-
 for (var i = 0; i < pathEls.length; i++) {
     // console.log("individualTrainLines", individualTrainLines);
 
@@ -1077,8 +1081,8 @@ for (var i = 0; i < pathEls.length; i++) {
     var intro = anime({
         targets: pathEl,
         strokeDashoffset: [offset, 0],
-        duration: anime.random(1000, 3000),
-        delay: anime.random(0, 3000),
+        duration: anime.random(1000, 2000),
+        delay: anime.random(0, 1000),
         loop: false,
         direction: 'alternate',
         easing: 'easeInOutSine',
@@ -1281,7 +1285,7 @@ submit.on('click', function() {
             });
 
         }
-        callSetTimeout();
+        // callSetTimeout();
         function callSetTimeout() {
             setTimeout(function() {
                 console.log("change colour function");
@@ -1289,7 +1293,7 @@ submit.on('click', function() {
                 var first = true;
                 if(first) {
                     for (var i = 0; i < pathEls.length; i++) {
-                        pathEls[i].setAttribute('style', 'stroke:' + randomColor);
+                        pathEls[i].setAttribute('style', 'fill:' + randomColor);
                         first = false;
                     }
                 }else {
@@ -1319,7 +1323,7 @@ submit.on('click', function() {
 
     } else {
         $.ajax({
-            url: 'https://2.vbb.transport.rest/journeys?from=' + searchOrigin + '&to=' + searchDestination,
+            url: 'https://2.vbb.transport.rest/journeys?from=' + searchOrigin + '&to=' + searchDestination + '&tram=false&bus=false&ferry=false&express=false&regional=false',
             headers: {
             },
             success: function(data) {
@@ -1333,10 +1337,7 @@ submit.on('click', function() {
                 for (var i = 0; i < data.length; i++) {
                     departure.push({departure: data[i].departure, legs: data[i].legs});
                 }
-                console.log(data[0].legs[0].origin.name);
-                // console.log("log shit", data[0].legs[0].destination.name);
-                // console.log("log shit", data[0].legs[0].departure);
-                // console.log("log shit", data[0].legs[0].arrival);
+
 
                 for (var d = 0; d < departure.length; d++) {
                     if(departure[d].departure == null) {
@@ -1352,6 +1353,13 @@ submit.on('click', function() {
                 };
 
                 for (var q = 0; q < departure.length; q++) {
+                    for (var p = 0; p < departure.length; p++) {
+                        if(departure[p].legs[0].direction) {
+                            console.log("all the different directions", departure[p].legs[0].direction);
+                            console.log("And the attached lines", departure[p].legs[0].line.name);
+                        }
+
+                    }
 
                     departureHtml +='<div class="departure-times ' + [q] + '" data-myval="' + [q] +  '">' + departure[q].departure + '</div>';
                     allLegInformation["journey" + q] = [];
@@ -1366,7 +1374,7 @@ submit.on('click', function() {
                             oneLeg.arrival = new Date(oneLeg.arrival).toLocaleTimeString();
                             oneLeg.arrival = oneLeg.arrival.slice(0, -3);
 
-                            departureHtml +='<div class="leg-times">' + oneLeg.origin.name + ' (' + oneLeg.departure + ') to ' + oneLeg.destination.name + ' (' + oneLeg.arrival + ')</div>';
+                            departureHtml +='<div class="leg-times">From ' + oneLeg.origin.name + ' (' + oneLeg.departure + ') <br>To ' + oneLeg.destination.name + ' (' + oneLeg.arrival + ')</div>';
 
 
                             if(departure[0].legs[0].mode == "walking") {
@@ -1394,13 +1402,7 @@ submit.on('click', function() {
                 // }
                 var trainDirection = departure[0].legs[0].direction;
 
-                // for (var p = 0; p < departure.length; p++) {
-                //     if(departure[p].legs[0].direction) {
-                //         console.log("all the different directions", departure[p].legs[0].direction);
-                //         console.log("And the attached lines", departure[p].legs[0].line.name);
-                //     }
-                //
-                // }
+
 
 
 
@@ -1410,9 +1412,17 @@ submit.on('click', function() {
 
                 $(".departure-times").on('click', function(e) {
                     console.log("removing hidden class from legs", $(this).attr('data-myval'));
+                    var randomColor = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
+
                     if($(this).next().hasClass('hidden')) {
                         console.log("Trying to show", e.target, $(this));
                         $(this).next().removeClass('hidden');
+
+                        // $(this).next().css('color:', randomColor);
+                        $(this).next().css('color', randomColor);
+
+
+
                         clicked = false;
                         console.log("Inside click", allLegInformation);
                         makeThemLinesMove(allLegInformation, $(this).attr('data-myval'));
@@ -1481,7 +1491,7 @@ function makeThemLinesMove(allTravelInformation, journeyNumber) {
     console.log("all Matching lines", allMatchingLines);
 
 
-for (var i = 0; i < allMatchingLines.length; i++) {
+    for (var i = 0; i < allMatchingLines.length; i++) {
 
         var animateLine = allMatchingLines[i].path[0];
         animateLine.classList.remove('hide');
@@ -1490,9 +1500,9 @@ for (var i = 0; i < allMatchingLines.length; i++) {
         anime({
             targets: animateLine,
             strokeDashoffset: [offset, 0],
-            duration: anime.random(1000, 2000),
+            duration: anime.random(3000, 5000),
             delay: anime.random(0, 1000),
-            loop: true,
+            loop: false,
             direction: 'alternate',
             easing: 'easeInOutSine',
             autoplay: true
@@ -1506,6 +1516,8 @@ for (var i = 0; i < allMatchingLines.length; i++) {
 
 function findMatchingTrainLines(currentJourney) {
     var allMatchingLines = [];
+    console.log("first current journey", currentJourney);
+
     for (var i = 0; i < currentJourney.length; i++) {
         for (var key in allStationLines) {
             if (allStationLines.hasOwnProperty(key)) {

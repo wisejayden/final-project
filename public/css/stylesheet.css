@@ -1,4 +1,72 @@
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+
+
+@font-face {
+    font-family: 'audrey';
+    src: url('/fonts/audrey-bold-webfont.woff2') format('woff2'),
+        url('/fonts/audrey-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'coco';
+    src: url('/fonts/coco-bold-webfont.woff2') format('woff2'),
+        url('/fonts/coco-bold-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'elianto';
+    src: url('/fonts/elianto-regular-webfont.woff2') format('woff2'),
+        url('/fonts/elianto-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'simplifica';
+    src: url('/fonts/simplifica_typeface-webfont.woff2') format('woff2'),
+        url('/fonts/simplifica_typeface-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'skinny';
+    src: url('/fonts/skinny-regular-webfont.woff2') format('woff2'),
+        url('/fonts/skinny-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'pops';
+    src: url('/fonts/pops_08_regular-webfont.woff2') format('woff2'),
+        url('/fonts/pops_08_regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'whatever';
+    src: url('/fonts/whatever_it_takes-webfont.woff2') format('woff2'),
+        url('/fonts/whatever_it_takes-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+.search-fields {
+    margin-top: 20px;
+    margin-left: 66px;
+}
+p {
+    font-family: "audrey";
+
+}
+
 
 * {
   margin: 0;
@@ -61,12 +129,10 @@ svg {
     /* height of the image */
 }
 
-.search-fields {
-    margin-top: 20px;
-}
 #submit {
-    display: absolute;
-    left: 300px;
+    font-size: 20px;
+    margin-top: 5px;
+
 }
 
 #westhafen {
@@ -78,6 +144,10 @@ svg {
     border-radius: 50%;
 
     position: absolute;
+}
+
+.leg-times {
+    margin-bottom: 8px;
 }
 .leg-times-container {
     display:block;
@@ -97,8 +167,20 @@ svg {
 #originResults.hidden {
     display: none;
 }
+
+.destination-container {
+    margin-top: 20px;
+}
 #destinationResults {
 
+}
+
+.timetable-information {
+    position: absolute;
+    left: 70%;
+    margin-top: 11%;
+    max-width: 28%;
+    margin-top: 18%;
 }
 
  .hide:not(.whitebackground) {
@@ -107,6 +189,8 @@ svg {
 
 .departure-times {
     cursor: pointer;
+    margin-bottom: 10px;
+    margin-left: 106px;
 }
 #destinationResults.hidden {
     display: none;
@@ -122,7 +206,7 @@ div.highlight {
 html,
 body,
 header {
-	background-color: #111116; /* Black */
+	background-color: #242426;
     position: relative;
     display: inline-block;
 
@@ -134,7 +218,7 @@ body {
   width: 100%;
   height: 50%;
   color: white;
-  font-family: sans-serif;
+  font-family: "avenir";
   -webkit-font-smoothing: antialiased;
   overflow-x: scroll;
 }

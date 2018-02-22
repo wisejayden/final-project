@@ -25,16 +25,11 @@ function makeThemLinesMove(allTravelInformation, journeyNumber) {
                     var currentLine = allStationLines[key];
                     console.log("CurrentLine", currentLine);
 
-
-
-
                     //loop through the correct Line e.g. S3, S5
                     for (var o = 0; o < currentLine.length; o++) {
 
                         for (var keykey in currentLine[o]) {
                             if (currentLine[o].hasOwnProperty(keykey)) {
-
-
                                 //Sort out the lines with the correct direction
                                 if (currentJourney[i].direction == currentLine[o].direction) {
                                     console.log("destination and name", currentJourney[i].destination, currentLine[o].name);
@@ -49,10 +44,6 @@ function makeThemLinesMove(allTravelInformation, journeyNumber) {
                                         }
                                     }
                                     console.log("log activeLines", activeLines);
-
-
-
-
 
                                     // var activeLines = currentLine[o].slice(0, o);
                                     // var activeLines = currentJourney[o].filter()
