@@ -101,9 +101,10 @@ svg {
 
 }
 
- .hide {
+ .hide:not(.whitebackground) {
     display: none;
 }
+
 .departure-times {
     cursor: pointer;
 }

@@ -51,12 +51,12 @@ const ostkOs3 = {
 
 const warSp3 = {
     path: $('.warschauer-ostbahnof-s3'),
-    name: "S+U Warschauer Straße",
+    name: "S+U Warschauer Str.",
     direction: "S Spandau"
 };
 const warOs3 = {
     path: $('.warschauer-ostbahnof-s3'),
-    name: "S+U Warschauer Straße",
+    name: "S+U Warschauer Str.",
     direction: "S Ostbahnhof"
 };
 const ostSp3 = {
@@ -234,7 +234,7 @@ const ostEr3 = {
 };
 const warEr3 = {
     path: $('.warschauer-ostkreuz-s3'),
-    name: "S+U Warschauer Straße",
+    name: "S+U Warschauer Str.",
     direction: "S Erkner"
 };
 const ostkEr3 = {
@@ -324,7 +324,7 @@ const ostSt5 = {
 };
 const warSt5 = {
     path: $('.warschauer-ostkreuz-s5'),
-    name: "S+U Warschauer Straße",
+    name: "S+U Warschauer Str.",
     direction: "S Strausberg Nord"
 };
 const ostkSt5 = {
@@ -411,7 +411,7 @@ const ostMa5 = {
 };
 const warMa5 = {
     path: $('.warschauer-ostkreuz-s5'),
-    name: "S+U Warschauer Straße",
+    name: "S+U Warschauer Str.",
     direction: "S Mahlsdorf"
 };
 const ostkMa5 = {
@@ -465,7 +465,7 @@ const ostkWe5 = {
 };
 const warWe5 = {
     path: $('.warschauer-ostbahnof-s5'),
-    name: "S+U Warschauer Straße",
+    name: "S+U Warschauer Str.",
     direction: "S Westkreuz"
 };
 const ostWe5 = {
@@ -550,7 +550,7 @@ const ostkGr5 = {
 };
 const warGr5 = {
     path: $('.warschauer-ostbahnof-s5'),
-    name: "S+U Warschauer Straße",
+    name: "S+U Warschauer Str.",
     direction: "S Grunewald"
 };
 const ostGr5 = {
@@ -636,7 +636,7 @@ const ostkOs5 = {
 };
 const warOs5 = {
     path: $('.warschauer-ostbahnof-s5'),
-    name: "S+U Warschauer Straße",
+    name: "S+U Warschauer Str.",
     direction: "S Ostbahnhof"
 };
 
@@ -647,7 +647,7 @@ const warOs5 = {
 
 const osdHe25 = {
     path: $('.osdorfer_str-lichterfelder_ost-s2'),
-    name: "S Osdorfer Straße",
+    name: "S Osdorfer Str.",
     direction: "S Hennigsdorf"
 };
 const licHe25 = {
@@ -702,7 +702,7 @@ const friHe25 = {
 };
 const oraHe25 = {
     path: $('.oranienburger_str-nordbahnof-s2'),
-    name: "S Oranienburger Straße",
+    name: "S Oranienburger Str.",
     direction: "S Hennigsdorf"
 };
 const norHe25 = {
@@ -722,7 +722,7 @@ const gesHe25 = {
 };
 const borHe25 = {
     path: $('.bornholmer_str-wollankstr-s2'),
-    name: "S Bornholmer Straße",
+    name: "S Bornholmer Str.",
     direction: "S Hennigsdorf"
 };
 const wolHe25 = {

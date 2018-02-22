@@ -1016,6 +1016,11 @@ var timetableInformation = $('.timetable-information');
 var departureTimesDiv = $('.departure-times');
 var legTimes = $('.leg-times');
 var button = $('button');
+var individualTrainLines = $("#individualtrainlines");
+var pathEls = document.querySelectorAll('path');
+var hiddenPaths = $('.ind');
+
+
 
 // button.on('click', function(e) {
 //     console.log("button click");
@@ -1053,6 +1058,78 @@ resultsClick(origin, originResults);
 resultsClick(destination, destinationResults);
 keyDownActivity(origin, originResults);
 keyDownActivity(destination, destinationResults);
+
+
+
+
+
+
+
+
+for (var i = 0; i < pathEls.length; i++) {
+    // console.log("individualTrainLines", individualTrainLines);
+
+    var pathEl = pathEls[i];
+    var offset = anime.setDashoffset(pathEl);
+    pathEl.setAttribute('stroke-dashoffset', offset);
+
+
+    var intro = anime({
+        targets: pathEl,
+        strokeDashoffset: [offset, 0],
+        duration: anime.random(1000, 3000),
+        delay: anime.random(0, 3000),
+        loop: false,
+        direction: 'alternate',
+        easing: 'easeInOutSine',
+        autoplay: true
+    });
+
+}
+
+
+svg.on('click', function() {
+    console.log("HI@");
+    hiddenPaths.addClass('hide');
+
+
+});
+
+
+// $(window).ready(function() {
+//     var intro;
+//     $(document).on('click', function(e) {
+//         // e.preventDefault();
+//         console.log(intro.pause());
+//         intro.pause();
+//     });
+//
+//
+// });
+
+//
+// page.on('click', function() {
+//     for (var i = 0; i < pathEls.length; i++) {
+//         // console.log("individualTrainLines", individualTrainLines);
+//
+//         var pathEl = pathEls[i];
+//         var offset = anime.setDashoffset(pathEl);
+//         pathEl.setAttribute('stroke-dashoffset', offset);
+//         anime({
+//             targets: pathEl,
+//             strokeDashoffset: [offset, 0],
+//             duration: anime.random(1000, 3000),
+//             delay: anime.random(0, 2000),
+//             loop: false,
+//             direction: 'alternate',
+//             easing: 'easeInOutSine',
+//             autoplay: false
+//         });
+//     }
+// })
+
+
+
 
 
 
@@ -1177,141 +1254,208 @@ submit.on('click', function() {
     }
 
 
+    if(destination.val().toLowerCase() == 'the party') {
+        hiddenPaths.removeClass('hide');
 
 
 
-    $.ajax({
-        url: 'https://2.vbb.transport.rest/journeys?from=' + searchOrigin + '&to=' + searchDestination,
-        headers: {
-        },
-        success: function(data) {
-            console.log("SUCCESS!");
-            var departure = [];
-            // var departureTimes;
-            var departureHtml = '';
-            var legsInfo = [];
-            var legsHtml = '';
+        for (var i = 0; i < pathEls.length; i++) {
+            // console.log("individualTrainLines", individualTrainLines);
+            var randomColor = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
+            pathEls[i].setAttribute('style', 'fill:' + randomColor);
 
-            for (var i = 0; i < data.length; i++) {
-                departure.push({departure: data[i].departure, legs: data[i].legs});
-            }
-            console.log(data[0].legs[0].origin.name);
-            // console.log("log shit", data[0].legs[0].destination.name);
-            // console.log("log shit", data[0].legs[0].departure);
-            // console.log("log shit", data[0].legs[0].arrival);
+            var pathEl = pathEls[i];
+            var offset = anime.setDashoffset(pathEl);
+            pathEl.setAttribute('stroke-dashoffset', offset);
 
-            for (var d = 0; d < departure.length; d++) {
-                if(departure[d].departure == null) {
-                    departure[d].departure = 'Cancelled'
-                } else {
-                    departure[d].departure = new Date(departure[d].departure).toLocaleTimeString();
-                    departure[d].departure = departure[d].departure.slice(0, -3);
 
+            anime({
+                targets: pathEl,
+                strokeDashoffset: [offset, 0],
+                duration: anime.random(1000, 3000),
+                delay: anime.random(0, 2000),
+                loop: true,
+                direction: 'alternate',
+                easing: 'easeInOutSine',
+                autoplay: true
+            });
+
+        }
+        callSetTimeout();
+        function callSetTimeout() {
+            setTimeout(function() {
+                console.log("change colour function");
+                var randomColor = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
+                var first = true;
+                if(first) {
+                    for (var i = 0; i < pathEls.length; i++) {
+                        pathEls[i].setAttribute('style', 'stroke:' + randomColor);
+                        first = false;
+                    }
+                }else {
+                    for (var i = 0; i < pathEls.length; i++) {
+                        pathEls[i].setAttribute('style', 'fill:' + randomColor);
+                        first = true;
+                    }
                 }
-            }
 
-            var allLegInformation = {
-            };
+                // for (var i = 0; i < pathEls.length; i++) {
+                //     var first = true;
+                //     if(first) {
+                //         pathEls[i].setAttribute('style', 'stroke:' + randomColor);
+                //         first = false;
+                //     } else {
+                //         pathEls[i].setAttribute('style', 'fill:' + randomColor);
+                //         first = true;
+                //     }
+                //
+                // }
 
-            for (var q = 0; q < departure.length; q++) {
-
-                departureHtml +='<div class="departure-times ' + [q] + '">' + departure[q].departure + '</div>';
-                allLegInformation["journey" + q] = [];
-
-                departureHtml += '<div class="leg-times-container hidden">'
-                for (var l = 0; l < departure[q].legs.length; l++) {
-                    var trainLine;
-                    var oneLeg = departure[q].legs[l];
-                    if(departure[q] != null) {
-                        oneLeg.departure = new Date(oneLeg.departure).toLocaleTimeString();
-                        oneLeg.departure = oneLeg.departure.slice(0, -3);
-                        oneLeg.arrival = new Date(oneLeg.arrival).toLocaleTimeString();
-                        oneLeg.arrival = oneLeg.arrival.slice(0, -3);
-
-                        departureHtml +='<div class="leg-times">' + oneLeg.origin.name + ' (' + oneLeg.departure + ') to ' + oneLeg.destination.name + ' (' + oneLeg.arrival + ')</div>';
+                callSetTimeout();
+            }, 200);
+        }
 
 
-                        if(departure[0].legs[0].mode == "walking") {
-                            trainLine = "Walking"
-                        } else {
-                            trainLine = departure[0].legs[0].line.name;
 
-                        }
-                        // console.log("Look at trainlines", trainLine);
-                        allLegInformation["journey" + q].push({origin: oneLeg.origin.name, line: trainLine, destination: oneLeg.destination.name, direction: oneLeg.direction})
+    } else {
+        $.ajax({
+            url: 'https://2.vbb.transport.rest/journeys?from=' + searchOrigin + '&to=' + searchDestination,
+            headers: {
+            },
+            success: function(data) {
+                console.log("SUCCESS!");
+                var departure = [];
+                // var departureTimes;
+                var departureHtml = '';
+                var legsInfo = [];
+                var legsHtml = '';
+
+                for (var i = 0; i < data.length; i++) {
+                    departure.push({departure: data[i].departure, legs: data[i].legs});
+                }
+                console.log(data[0].legs[0].origin.name);
+                // console.log("log shit", data[0].legs[0].destination.name);
+                // console.log("log shit", data[0].legs[0].departure);
+                // console.log("log shit", data[0].legs[0].arrival);
+
+                for (var d = 0; d < departure.length; d++) {
+                    if(departure[d].departure == null) {
+                        departure[d].departure = 'Cancelled'
+                    } else {
+                        departure[d].departure = new Date(departure[d].departure).toLocaleTimeString();
+                        departure[d].departure = departure[d].departure.slice(0, -3);
 
                     }
                 }
-                departureHtml += '</div>'
-            }
-            timetableInformation.html(departureHtml);
-            console.log("Log my brand spankin new object", allLegInformation);
 
-            makeThemLinesMove(allLegInformation, 0);
+                var allLegInformation = {
+                };
 
-            // if(departure[0].legs[0].line.name) {
-            //     var trainLine = departure[0].legs[0].line.name;
-            // } else {
-            //     trainLine = "Walking"
-            // }
-            var trainDirection = departure[0].legs[0].direction;
+                for (var q = 0; q < departure.length; q++) {
 
-            // for (var p = 0; p < departure.length; p++) {
-            //     if(departure[p].legs[0].direction) {
-            //         console.log("all the different directions", departure[p].legs[0].direction);
-            //         console.log("And the attached lines", departure[p].legs[0].line.name);
-            //     }
-            //
-            // }
+                    departureHtml +='<div class="departure-times ' + [q] + '" data-myval="' + [q] +  '">' + departure[q].departure + '</div>';
+                    allLegInformation["journey" + q] = [];
 
+                    departureHtml += '<div class="leg-times-container hidden">'
+                    for (var l = 0; l < departure[q].legs.length; l++) {
+                        var trainLine;
+                        var oneLeg = departure[q].legs[l];
+                        if(departure[q] != null) {
+                            oneLeg.departure = new Date(oneLeg.departure).toLocaleTimeString();
+                            oneLeg.departure = oneLeg.departure.slice(0, -3);
+                            oneLeg.arrival = new Date(oneLeg.arrival).toLocaleTimeString();
+                            oneLeg.arrival = oneLeg.arrival.slice(0, -3);
+
+                            departureHtml +='<div class="leg-times">' + oneLeg.origin.name + ' (' + oneLeg.departure + ') to ' + oneLeg.destination.name + ' (' + oneLeg.arrival + ')</div>';
 
 
+                            if(departure[0].legs[0].mode == "walking") {
+                                trainLine = "Walking"
+                            } else {
+                                trainLine = departure[0].legs[0].line.name;
 
+                            }
+                            // console.log("Look at trainlines", trainLine);
+                            allLegInformation["journey" + q].push({origin: oneLeg.origin.name, line: trainLine, destination: oneLeg.destination.name, direction: oneLeg.direction})
 
-            var clicked = false;
-
-            $(".departure-times").on('click', function(e) {
-                console.log("removing hidden class from legs");
-                if(clicked === true) {
-                    console.log("Trying to hide", e.target, $(this));
-                    $(this).next().addClass('hidden');
-                    clicked = false;
-                } else {
-                    console.log("Trying to show", e.target, $(this));
-                    $(this).next().removeClass('hidden');
-                    clicked = true;
-
+                        }
+                    }
+                    departureHtml += '</div>'
                 }
-            });
+                timetableInformation.html(departureHtml);
+                console.log("Log my brand spankin new object", allLegInformation);
+
+                makeThemLinesMove(allLegInformation, 0);
+
+                // if(departure[0].legs[0].line.name) {
+                //     var trainLine = departure[0].legs[0].line.name;
+                // } else {
+                //     trainLine = "Walking"
+                // }
+                var trainDirection = departure[0].legs[0].direction;
+
+                // for (var p = 0; p < departure.length; p++) {
+                //     if(departure[p].legs[0].direction) {
+                //         console.log("all the different directions", departure[p].legs[0].direction);
+                //         console.log("And the attached lines", departure[p].legs[0].line.name);
+                //     }
+                //
+                // }
 
 
 
-            // if(trainLine == 'U1' && trainDirection == 'S+U Warschauer Str.') {
-            //     console.log("Right direction!");
-            //     for (var key in u1DirWar) {
-            //         if (u1DirWar.hasOwnProperty(key)) {
-            //             console.log("Please animate");
-            //             var animateLine = u1DirWar[key].div[0];
-            //
-            //             animateLine.classList.remove('hide');
-            //             console.log("Looking at div", animateLine);
-            //             var offset = anime.setDashoffset(animateLine);
-            //             animateLine.setAttribute('stroke-dashoffset', offset);
-            //             anime({
-            //                 targets: animateLine,
-            //                 strokeDashoffset: [offset, 0],
-            //                 duration: anime.random(1000, 2000),
-            //                 delay: anime.random(0, 1000),
-            //                 loop: true,
-            //                 direction: 'alternate',
-            //                 easing: 'easeInOutSine',
-            //                 autoplay: true
-            //             });
-            //         }
-            //     }
-            // }
-        }
-    });
+
+
+                var clicked = false;
+
+                $(".departure-times").on('click', function(e) {
+                    console.log("removing hidden class from legs", $(this).attr('data-myval'));
+                    if($(this).next().hasClass('hidden')) {
+                        console.log("Trying to show", e.target, $(this));
+                        $(this).next().removeClass('hidden');
+                        clicked = false;
+                        console.log("Inside click", allLegInformation);
+                        makeThemLinesMove(allLegInformation, $(this).attr('data-myval'));
+                    } else {
+                        console.log("HELLO");
+                        console.log("Trying to hide", e.target, $(this));
+                        $(this).next().addClass('hidden');
+                        clicked = true;
+                    }
+                });
+
+
+
+                // if(trainLine == 'U1' && trainDirection == 'S+U Warschauer Str.') {
+                //     console.log("Right direction!");
+                //     for (var key in u1DirWar) {
+                //         if (u1DirWar.hasOwnProperty(key)) {
+                //             console.log("Please animate");
+                //             var animateLine = u1DirWar[key].div[0];
+                //
+                //             animateLine.classList.remove('hide');
+                //             console.log("Looking at div", animateLine);
+                //             var offset = anime.setDashoffset(animateLine);
+                //             animateLine.setAttribute('stroke-dashoffset', offset);
+                //             anime({
+                //                 targets: animateLine,
+                //                 strokeDashoffset: [offset, 0],
+                //                 duration: anime.random(1000, 2000),
+                //                 delay: anime.random(0, 1000),
+                //                 loop: true,
+                //                 direction: 'alternate',
+                //                 easing: 'easeInOutSine',
+                //                 autoplay: true
+                //             });
+                //         }
+                //     }
+                // }
+            }
+        });
+    }
+
+
+
 });
 //
 
@@ -1340,7 +1484,6 @@ function makeThemLinesMove(allTravelInformation, journeyNumber) {
 for (var i = 0; i < allMatchingLines.length; i++) {
 
         var animateLine = allMatchingLines[i].path[0];
-        console.log(animateLine);
         animateLine.classList.remove('hide');
         var offset = anime.setDashoffset(animateLine);
         animateLine.setAttribute('stroke-dashoffset', offset);
@@ -1411,13 +1554,25 @@ function findDepartureStops(currentJourney, activeLines) {
     console.log("Current journey", currentJourney.destination);
     console.log("Active lines", activeLines);
 
+    var idx = activeLines.findIndex(function(item) {
+        return item.name == currentJourney.origin;
+    })
+    console.log("idx", idx);
+
+
+    var findStartStation = activeLines.slice(idx);
+    console.log("findStartStation", findStartStation);
 
 
     var index = activeLines.findIndex(function(item) {
+        console.log("Item name", item.name);
+        console.log("Log the destination", currentJourney.destination);
+        console.log("Are they equal?", item.name == currentJourney.destination);
+
         return item.name == currentJourney.destination;
 
     });
-    var allMatchingLines = activeLines.slice(0, index);
+    var allMatchingLines = findStartStation.slice(0, index);
     console.log("These are the correct stations_________________________________", allMatchingLines);
 
     return allMatchingLines;
