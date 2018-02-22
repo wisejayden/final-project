@@ -111,7 +111,7 @@ var stations =
         "name": "Friedrichsfelde Ost"
     },
     "S+U Friedrichstraße": {
-        "id": "900000080201",
+        "id": "900000100001",
         "name": "Friedrichstrasse"
     },
     "S Gehrenseestraße": {
@@ -1227,8 +1227,6 @@ submit.on('click', function() {
                         oneLeg.departure = oneLeg.departure.slice(0, -3);
                         oneLeg.arrival = new Date(oneLeg.arrival).toLocaleTimeString();
                         oneLeg.arrival = oneLeg.arrival.slice(0, -3);
-                        console.log("origin", oneLeg.origin.name);
-                        console.log("destination", oneLeg.destination.name);
 
                         departureHtml +='<div class="leg-times">' + oneLeg.origin.name + ' (' + oneLeg.departure + ') to ' + oneLeg.destination.name + ' (' + oneLeg.arrival + ')</div>';
 
@@ -1239,9 +1237,8 @@ submit.on('click', function() {
                             trainLine = departure[0].legs[0].line.name;
 
                         }
-                        console.log("Look at trainlines", trainLine);
+                        // console.log("Look at trainlines", trainLine);
                         allLegInformation["journey" + q].push({origin: oneLeg.origin.name, line: trainLine, destination: oneLeg.destination.name, direction: oneLeg.direction})
-                        console.log(oneLeg);
 
                     }
                 }
@@ -1250,32 +1247,25 @@ submit.on('click', function() {
             timetableInformation.html(departureHtml);
             console.log("Log my brand spankin new object", allLegInformation);
 
-            makeThemLinesMove(allLegInformation);
+            makeThemLinesMove(allLegInformation, 0);
 
             // if(departure[0].legs[0].line.name) {
             //     var trainLine = departure[0].legs[0].line.name;
             // } else {
             //     trainLine = "Walking"
             // }
-            console.log("trainlines", trainLine);
             var trainDirection = departure[0].legs[0].direction;
 
-            for (var p = 0; p < departure.length; p++) {
-                if(departure[p].legs[0].direction) {
-                    console.log("all the different directions", departure[p].legs[0].direction);
-                    console.log("And the attached lines", departure[p].legs[0].line.name);
-                }
+            // for (var p = 0; p < departure.length; p++) {
+            //     if(departure[p].legs[0].direction) {
+            //         console.log("all the different directions", departure[p].legs[0].direction);
+            //         console.log("And the attached lines", departure[p].legs[0].line.name);
+            //     }
+            //
+            // }
 
-            }
 
 
-            // var legs = {
-            //     leg1: [
-            //         {line: "u1", destination: "hallches tor", direction: "uhlandstr"},
-            //         {line: "u6", destination: "mehringdamm", direction: "alt-mariendford"}
-            //     ],
-            //     leg2: [{}]
-            // };
 
 
             var clicked = false;
@@ -1340,52 +1330,109 @@ submit.on('click', function() {
 //     name: "Uhlandstr",
 //     direction: "Warschauer Str."
 // };
-
-
-//Pass the apis resulting legs into function.
 function makeThemLinesMove(allTravelInformation, journeyNumber) {
-    var arrayOfLines = [];
-    var currentJourney = allTravelInformation.journeyNumber
+    var currentJourney = allTravelInformation["journey" + journeyNumber];
+
+    var allMatchingLines = findMatchingTrainLines(currentJourney)
+    console.log("all Matching lines", allMatchingLines);
+
+
+for (var i = 0; i < allMatchingLines.length; i++) {
+
+        var animateLine = allMatchingLines[i].path[0];
+        console.log(animateLine);
+        animateLine.classList.remove('hide');
+        var offset = anime.setDashoffset(animateLine);
+        animateLine.setAttribute('stroke-dashoffset', offset);
+        anime({
+            targets: animateLine,
+            strokeDashoffset: [offset, 0],
+            duration: anime.random(1000, 2000),
+            delay: anime.random(0, 1000),
+            loop: true,
+            direction: 'alternate',
+            easing: 'easeInOutSine',
+            autoplay: true
+        });
+}
+
+
+
+
+}
+
+function findMatchingTrainLines(currentJourney) {
+    var allMatchingLines = [];
     for (var i = 0; i < currentJourney.length; i++) {
-        //loop through and source correct line from loop
         for (var key in allStationLines) {
             if (allStationLines.hasOwnProperty(key)) {
-                if(currentJourney[i].line == allStationLines[key]) {
-                    var currentLine = allStationLines[key];
-                    for (var o = 0; i < currentLine.length; o++) {
-                        for (var keykey in currentLine) {
-                            if (currentLine.hasOwnProperty(keykey)) {
-                                if (currentJourney[i].direction == currentLine[keykey].direction) {
-                                    arrayOfLines.push(currentLine[keykey]);
-                                }
-                            }
-                        }
+                if(currentJourney[i].line == key) {
+                    var activeLines = allStationLines[key];
+                    console.log("current journey", currentJourney[i]);
+
+                    var matchingLines = organiseByDirection(currentJourney[i], activeLines);
+                    for (var k = 0; k < matchingLines.length; k++) {
+                        allMatchingLines.push(matchingLines[k]);
                     }
+                    // allMatchingLines.push(currentLine);
                 }
+            }
+        }
+    }
+    console.log("findMatchingTrainLines allMatchingLines", allMatchingLines);
+    return allMatchingLines;
+}
+
+
+function organiseByDirection(currentJourney, activeLines) {
+    var matchingLinesWithCorrectDirection = [];
+    // console.log("____________", activeLines);
+    console.log("current journey", currentJourney);
+    console.log("activeLines", activeLines);
+
+    for (var keykey in activeLines) {
+        if (activeLines.hasOwnProperty(keykey)) {
+            if (currentJourney.direction == activeLines[keykey].direction) {
+                // console.log("activeLines[keykey]", activeLines[keykey]);
+                matchingLinesWithCorrectDirection.push(activeLines[keykey]);
+
+
 
             }
         }
-        //loop through an array containing every line and check to see if line matches variable name??????
-
-
-        //loop through that array
-        // for (var i = 0; i < u1.length; i++) {
-        //     //loop through all objects filtering by direction
-        //     for (var key in u1) {
-        //         if (u1.hasOwnProperty(key)) {
-        //             //filter everything after destination and then push to array
-        //             arrayOfLines.push(u1[key].direction);
-        //         }
-        //     }
-        // }
-
-        //access trainlines[i] equivalent array
-        //loop through that array and then loop through the object, filtering by direction.
     }
-    console.log(arrayOfLines);
+    console.log("matchingLinesWithCorrectDirection", matchingLinesWithCorrectDirection);
+    var allMatchingLines = findDepartureStops(currentJourney, matchingLinesWithCorrectDirection);
+    return allMatchingLines;
+}
+
+function findDepartureStops(currentJourney, activeLines) {
+
+    console.log("Current journey", currentJourney.destination);
+    console.log("Active lines", activeLines);
+
+
+
+    var index = activeLines.findIndex(function(item) {
+        return item.name == currentJourney.destination;
+
+    });
+    var allMatchingLines = activeLines.slice(0, index);
+    console.log("These are the correct stations_________________________________", allMatchingLines);
+
+    return allMatchingLines;
+
+
+
+}
+
+
+
+
+
+    // console.log("Do I get back my array of lines?________", arrayOfLines);
     //filter array by everythng after destination.
     //animate filtered arrays.
-}
 
 
 
