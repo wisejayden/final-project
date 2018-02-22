@@ -992,12 +992,10 @@ var stations =
 
 
 
-//
-//
-// var u1DirUhl;
-// var u1DirWar = [uhlandstrWar, kurfurstendammWar, wittenbergWar, nollendorWar, kurfurstenstrWar, gleisdreiWar, mockernWar, hallchesWar]
-//
-//
+// $( document ).ready()
+console.log("Trying to log from other js file", allStationLines);
+
+
 
 
 
@@ -1212,33 +1210,53 @@ submit.on('click', function() {
                 }
             }
 
+            var allLegInformation = {
+            };
 
             for (var q = 0; q < departure.length; q++) {
 
                 departureHtml +='<div class="departure-times ' + [q] + '">' + departure[q].departure + '</div>';
+                allLegInformation["journey" + q] = [];
 
                 departureHtml += '<div class="leg-times-container hidden">'
                 for (var l = 0; l < departure[q].legs.length; l++) {
+                    var trainLine;
                     var oneLeg = departure[q].legs[l];
                     if(departure[q] != null) {
                         oneLeg.departure = new Date(oneLeg.departure).toLocaleTimeString();
                         oneLeg.departure = oneLeg.departure.slice(0, -3);
                         oneLeg.arrival = new Date(oneLeg.arrival).toLocaleTimeString();
                         oneLeg.arrival = oneLeg.arrival.slice(0, -3);
+                        console.log("origin", oneLeg.origin.name);
+                        console.log("destination", oneLeg.destination.name);
 
                         departureHtml +='<div class="leg-times">' + oneLeg.origin.name + ' (' + oneLeg.departure + ') to ' + oneLeg.destination.name + ' (' + oneLeg.arrival + ')</div>';
+
+
+                        if(departure[0].legs[0].mode == "walking") {
+                            trainLine = "Walking"
+                        } else {
+                            trainLine = departure[0].legs[0].line.name;
+
+                        }
+                        console.log("Look at trainlines", trainLine);
+                        allLegInformation["journey" + q].push({origin: oneLeg.origin.name, line: trainLine, destination: oneLeg.destination.name, direction: oneLeg.direction})
+                        console.log(oneLeg);
+
                     }
                 }
                 departureHtml += '</div>'
             }
             timetableInformation.html(departureHtml);
+            console.log("Log my brand spankin new object", allLegInformation);
 
-            // console.log("LOOK INTO NAME", departure[0].legs[0]);
-            if(departure[0].legs[0].line.name) {
-                var trainLine = departure[0].legs[0].line.name;
-            } else {
-                trainLine = "Walking"
-            }
+            makeThemLinesMove(allLegInformation);
+
+            // if(departure[0].legs[0].line.name) {
+            //     var trainLine = departure[0].legs[0].line.name;
+            // } else {
+            //     trainLine = "Walking"
+            // }
             console.log("trainlines", trainLine);
             var trainDirection = departure[0].legs[0].direction;
 
@@ -1249,6 +1267,15 @@ submit.on('click', function() {
                 }
 
             }
+
+
+            // var legs = {
+            //     leg1: [
+            //         {line: "u1", destination: "hallches tor", direction: "uhlandstr"},
+            //         {line: "u6", destination: "mehringdamm", direction: "alt-mariendford"}
+            //     ],
+            //     leg2: [{}]
+            // };
 
 
             var clicked = false;
@@ -1298,12 +1325,9 @@ submit.on('click', function() {
 });
 //
 
-//
-//
-// [
-//          {line: "u1", destination: "hallches tor", direction: "uhlandstr"},
-//          {line: "u6", destination: "mehringdamm", direction: "alt-mariendford"}
-// ];
+
+
+
 //
 //
 // var {
@@ -1316,34 +1340,52 @@ submit.on('click', function() {
 //     name: "Uhlandstr",
 //     direction: "Warschauer Str."
 // };
-//
-//
-// //Pass the apis resulting legs into function.
-// function makeThemLinesMove([trainLinesAndDirections]) {
-//     var arrayOfLines = [];
-//     for (var i = 0; i < trainLinesAndDirections.length; i++) {
-//         //loop through and source correct line from loop
-//         trainLinesAndDirections[i].line ==?
-//         //loop through an array containing every line and check to see if line matches variable name??????
-//
-//
-//         //loop through that array
-//         for (var i = 0; i < u1.length; i++) {
-//             //loop through all objects filtering by direction
-//             for (var key in u1) {
-//                 if (u1.hasOwnProperty(key)) {
-//                     //filter everything after destination and then push to array
-//                     arrayOfLines.push(u1[key].direction);
-//                 }
-//             }
-//         }
-//
-//         //access trainlines[i] equivalent array
-//         //loop through that array and then loop through the object, filtering by direction.
-//     }
-//     //filter array by everythng after destination.
-//     //animate filtered arrays.
-// }
+
+
+//Pass the apis resulting legs into function.
+function makeThemLinesMove(allTravelInformation, journeyNumber) {
+    var arrayOfLines = [];
+    var currentJourney = allTravelInformation.journeyNumber
+    for (var i = 0; i < currentJourney.length; i++) {
+        //loop through and source correct line from loop
+        for (var key in allStationLines) {
+            if (allStationLines.hasOwnProperty(key)) {
+                if(currentJourney[i].line == allStationLines[key]) {
+                    var currentLine = allStationLines[key];
+                    for (var o = 0; i < currentLine.length; o++) {
+                        for (var keykey in currentLine) {
+                            if (currentLine.hasOwnProperty(keykey)) {
+                                if (currentJourney[i].direction == currentLine[keykey].direction) {
+                                    arrayOfLines.push(currentLine[keykey]);
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+        //loop through an array containing every line and check to see if line matches variable name??????
+
+
+        //loop through that array
+        // for (var i = 0; i < u1.length; i++) {
+        //     //loop through all objects filtering by direction
+        //     for (var key in u1) {
+        //         if (u1.hasOwnProperty(key)) {
+        //             //filter everything after destination and then push to array
+        //             arrayOfLines.push(u1[key].direction);
+        //         }
+        //     }
+        // }
+
+        //access trainlines[i] equivalent array
+        //loop through that array and then loop through the object, filtering by direction.
+    }
+    console.log(arrayOfLines);
+    //filter array by everythng after destination.
+    //animate filtered arrays.
+}
 
 
 
