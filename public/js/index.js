@@ -14,7 +14,7 @@ var stations =
         "name": "Ahrensfelde"
     },
     "S+U Alexanderplatz Bhf": {
-        "id": "900000023302",
+        "id": "900000100003",
         "name": "Alexanderplatz"
     },
 
@@ -912,7 +912,7 @@ var stations =
         "name": "Franz Neumann Platz"
     },
     "U Osloer Straße": {
-        "id": "900000009272",
+        "id": "900000009202",
         "name": "Osloer Strasse"
     },
     "U Pankstraße": {
@@ -969,7 +969,7 @@ var stations =
     },
     "U Güntzelstraße": {
         "id": "900000043201",
-        "name": "Güntzelstrasse"
+        "name": "Guntzelstrasse"
     },
     "U Friedrich-Wilhelm-Platz": {
         "id": "900000061102",
@@ -985,7 +985,7 @@ var stations =
     },
     "U Bundestag": {
         "id": "900000003254",
-        "name": "Blissestrasse"
+        "name": "Bundestag"
     },
     "U Altstadt Spandau": {
         "id": "900000029301",
@@ -994,6 +994,10 @@ var stations =
     "U Jakob-Kaiser-Platz": {
         "id": "900000018101",
         "name": "Jakob-Kaiser-Platz"
+    },
+    "U Hohenzollernplatz": {
+        "id": "900000043101",
+        "name": "Hohenzollernplatz"
     }
 };
 
@@ -1015,6 +1019,9 @@ var highlight = $('.highlight');
 var page = $('html');
 var svg = $('svg');
 var singleOriginResult = $('.origin-singleresult');
+var originContainer = $('.origin-container');
+var destinationContainer = $('.destination-container');
+
 var singleDestinationResult = $('.destination-singleresult');
 var singleResult = $('.singleresult');
 var timetableInformation = $('.timetable-information');
@@ -1024,6 +1031,11 @@ var button = $('button');
 var individualTrainLines = $("#individualtrainlines");
 var pathEls = document.querySelectorAll('path');
 var hiddenPaths = $('.ind');
+var lightsButton = $('#lightsonoff');
+var mapOutline = $('.whitebackground');
+var lightsOff = true;
+
+
 
 
 
@@ -1096,6 +1108,77 @@ svg.on('click', function() {
     console.log("HI@");
     hiddenPaths.addClass('hide');
 
+
+});
+
+lightsButton.on('click', function() {
+
+
+    console.log("log lightsOff", lightsOff);
+
+    if (lightsOff) {
+        console.log("turning lights on");
+        $('body, html').css('background-color', 'white');
+        mapOutline.css('stroke', '#000000');
+        originContainer.css('color', '#000000');
+        destinationContainer.css('color', '#000000');
+
+        hiddenPaths.removeClass('hide');
+
+
+        for (var i = 0; i < pathEls.length; i++) {
+            // console.log("individualTrainLines", individualTrainLines);
+
+            var pathEl = pathEls[i];
+            var offset = anime.setDashoffset(pathEl);
+            pathEl.setAttribute('stroke-dashoffset', offset);
+
+
+            var intro = anime({
+                targets: pathEl,
+                strokeDashoffset: [offset, 0],
+                duration: anime.random(1000, 2000),
+                delay: anime.random(0, 1000),
+                loop: false,
+                direction: 'alternate',
+                easing: 'easeInOutSine',
+                autoplay: true
+            });
+
+        }
+        lightsOff = false;
+    } else {
+        console.log("turning lights off");
+        hiddenPaths.removeClass('hide');
+        $('body, html').css('background-color', '#242426');
+        mapOutline.css('stroke', '#ffffff');
+        originContainer.css('color', '#ffffff');
+        destinationContainer.css('color', '#ffffff');
+
+        for (var k = 0; k < pathEls.length; k++) {
+            // console.log("individualTrainLines", individualTrainLines);
+
+            var pathEl = pathEls[k];
+            var offset = anime.setDashoffset(pathEl);
+            pathEl.setAttribute('stroke-dashoffset', offset);
+
+
+            var intro = anime({
+                targets: pathEl,
+                strokeDashoffset: [offset, 0],
+                duration: anime.random(1000, 2000),
+                delay: anime.random(0, 1000),
+                loop: false,
+                direction: 'alternate',
+                easing: 'easeInOutSine',
+                autoplay: true
+            });
+
+        }
+
+
+        lightsOff = true;
+    }
 
 });
 
@@ -1283,9 +1366,9 @@ submit.on('click', function() {
                 easing: 'easeInOutSine',
                 autoplay: true
             });
+            callSetTimeout();
 
         }
-        // callSetTimeout();
         function callSetTimeout() {
             setTimeout(function() {
                 console.log("change colour function");
@@ -1293,7 +1376,7 @@ submit.on('click', function() {
                 var first = true;
                 if(first) {
                     for (var i = 0; i < pathEls.length; i++) {
-                        pathEls[i].setAttribute('style', 'fill:' + randomColor);
+                        pathEls[i].setAttribute('style', 'stroke:' + randomColor);
                         first = false;
                     }
                 }else {
@@ -1323,7 +1406,7 @@ submit.on('click', function() {
 
     } else {
         $.ajax({
-            url: 'https://2.vbb.transport.rest/journeys?from=' + searchOrigin + '&to=' + searchDestination + '&tram=false&bus=false&ferry=false&express=false&regional=false',
+            url: 'https://2.vbb.transport.rest/journeys?from=' + searchOrigin + '&to=' + searchDestination + '&tram=false&bus=false&express=false&regional=false',
             headers: {
             },
             success: function(data) {
@@ -1354,9 +1437,10 @@ submit.on('click', function() {
 
                 for (var q = 0; q < departure.length; q++) {
                     for (var p = 0; p < departure.length; p++) {
+
                         if(departure[p].legs[0].direction) {
-                            console.log("all the different directions", departure[p].legs[0].direction);
-                            console.log("And the attached lines", departure[p].legs[0].line.name);
+                            // console.log("all the different directions", departure[p].legs[0].direction);
+                            // console.log("And the attached lines", departure[p].legs[0].line.name);
                         }
 
                     }
@@ -1369,20 +1453,24 @@ submit.on('click', function() {
                         var trainLine;
                         var oneLeg = departure[q].legs[l];
                         if(departure[q] != null) {
+                            if(oneLeg.mode) {
+                                console.log("walking");
+                                trainLine = "Walking"
+                            } else {
+                                trainLine = oneLeg.line.name;
+
+                            }
+
+
                             oneLeg.departure = new Date(oneLeg.departure).toLocaleTimeString();
                             oneLeg.departure = oneLeg.departure.slice(0, -3);
                             oneLeg.arrival = new Date(oneLeg.arrival).toLocaleTimeString();
                             oneLeg.arrival = oneLeg.arrival.slice(0, -3);
+                            console.log("DEPARTURE INFO", oneLeg);
+                            departureHtml +='<div class="leg-times">From ' + oneLeg.origin.name + ' (' + oneLeg.departure + ') on the ' + trainLine + '<br>To ' + oneLeg.destination.name + ' (' + oneLeg.arrival + ')</div>';
 
-                            departureHtml +='<div class="leg-times">From ' + oneLeg.origin.name + ' (' + oneLeg.departure + ') <br>To ' + oneLeg.destination.name + ' (' + oneLeg.arrival + ')</div>';
 
 
-                            if(departure[0].legs[0].mode == "walking") {
-                                trainLine = "Walking"
-                            } else {
-                                trainLine = departure[0].legs[0].line.name;
-
-                            }
                             // console.log("Look at trainlines", trainLine);
                             allLegInformation["journey" + q].push({origin: oneLeg.origin.name, line: trainLine, destination: oneLeg.destination.name, direction: oneLeg.direction})
 
@@ -1485,14 +1573,22 @@ submit.on('click', function() {
 //     direction: "Warschauer Str."
 // };
 function makeThemLinesMove(allTravelInformation, journeyNumber) {
+    for (var h = 0; h < hiddenPaths.length; h++) {
+        hiddenPaths[h].classList.add('hide');
+
+    };
+
+    console.log("_______________", journeyNumber);
     var currentJourney = allTravelInformation["journey" + journeyNumber];
+    console.log("current journey, first part of the function", currentJourney);
 
     var allMatchingLines = findMatchingTrainLines(currentJourney)
     console.log("all Matching lines", allMatchingLines);
 
 
-    for (var i = 0; i < allMatchingLines.length; i++) {
 
+    for (var i = 0; i < allMatchingLines.length; i++) {
+        console.log("LOOK AT HIS", allMatchingLines[i].path);
         var animateLine = allMatchingLines[i].path[0];
         animateLine.classList.remove('hide');
         var offset = anime.setDashoffset(animateLine);
@@ -1521,9 +1617,11 @@ function findMatchingTrainLines(currentJourney) {
     for (var i = 0; i < currentJourney.length; i++) {
         for (var key in allStationLines) {
             if (allStationLines.hasOwnProperty(key)) {
+
+
                 if(currentJourney[i].line == key) {
                     var activeLines = allStationLines[key];
-                    console.log("current journey", currentJourney[i]);
+
 
                     var matchingLines = organiseByDirection(currentJourney[i], activeLines);
                     for (var k = 0; k < matchingLines.length; k++) {
@@ -1540,6 +1638,7 @@ function findMatchingTrainLines(currentJourney) {
 
 
 function organiseByDirection(currentJourney, activeLines) {
+    console.log("organiseByDirection", currentJourney, activeLines);
     var matchingLinesWithCorrectDirection = [];
     // console.log("____________", activeLines);
     console.log("current journey", currentJourney);
@@ -1563,12 +1662,13 @@ function organiseByDirection(currentJourney, activeLines) {
 
 function findDepartureStops(currentJourney, activeLines) {
 
-    console.log("Current journey", currentJourney.destination);
-    console.log("Active lines", activeLines);
+    console.log("Active lines_______________", activeLines);
+
+    console.log("Current journey____________", currentJourney.destination);
 
     var idx = activeLines.findIndex(function(item) {
         return item.name == currentJourney.origin;
-    })
+    });
     console.log("idx", idx);
 
 
@@ -1576,7 +1676,7 @@ function findDepartureStops(currentJourney, activeLines) {
     console.log("findStartStation", findStartStation);
 
 
-    var index = activeLines.findIndex(function(item) {
+    var index = findStartStation.findIndex(function(item) {
         console.log("Item name", item.name);
         console.log("Log the destination", currentJourney.destination);
         console.log("Are they equal?", item.name == currentJourney.destination);
@@ -1584,6 +1684,7 @@ function findDepartureStops(currentJourney, activeLines) {
         return item.name == currentJourney.destination;
 
     });
+    console.log("index?", index);
     var allMatchingLines = findStartStation.slice(0, index);
     console.log("These are the correct stations_________________________________", allMatchingLines);
 

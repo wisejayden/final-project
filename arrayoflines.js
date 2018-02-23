@@ -14,7 +14,20 @@ const allStationLines = {
     ],
     u6: [
         alt_tMaU6, borMaU6,holMaU6,otiMaU6,schMaU6,kurMaU6,afrMaU6,rehMaU6,seeMaU6,leoMaU6,wedMaU6,reiMaU6,schwMaU6,natMaU6,oraMaU6,friMaU6,fraMaU6,staMaU6,kocMaU6,halMaU6,mehMaU6,plaMaU6,parMaU6,temMaU6,alt_teMaU6,kaiMaU6,ullMaU6,wesMaU6,alt_mTeU6,wesTeU6,ullTeU6,kaiTeU6,alt_teTeU6,temTeU6,parTeU6,plaTeU6,mehTeU6,halTeU6,kocTeU6,staTeU6,fraTeU6,friTeU6,oraTeU6,natTeU6,schwTeU6,reiTeU6,wedTeU6,leoTeU6,seeTeU6,rehTeU6,afrTeU6,kurTeU6,schTeU6,otiTeU6,holTeU6,borTeU6
+    ],
+    u5: [
+        aleHoU5,schHoU5,strHoU5,webHoU5,fratHoU5,samHoU5,fraaHoU5,magHoU5,licHoU5,friHoU5,tieHoU5,bieAlU5,tieAlU5,friAlU5,licAlU5,magAlU5,fraaAlU5,samAlU5,fratAlU5,webAlU5,strAlU5,schAlU5
+    ],
+    u3: [
+        nolKrU3,witKrU3,ausKrU3,spiKrU3,hohKrU3,fehKrU3,heiKrU3,rudKrU3,breKrU3,podKrU3,dahKrU3,freKrU3,oskKrU3,onkKrU3,kruNoU3,onkNoU3,oskNoU3,freNoU3,dahNoU3,podNoU3,breNoU3,rudNoU3,heiNoU3,fehNoU3,hohNoU3,spiNoU3,ausNoU3,witNoU3
+    ],
+    u4: [
+        nolInU4,vikInU4,bayInU4,rat_schoInU4,innNoU4,rat_schoNoU4,bayNoU4,vikNoU4
+    ],
+    u8: [
+        ratHeU8,karHeU8,linHeU8,parHeU8,resHeU8,fraHeU8,oslHeU8,panHeU8,gesHeU8,volHeU8,berHeU8,rosHeU8,weiHeU8,aleHeU8,janHeU8,heiHeU8,morHeU8,kotHeU8,schHeU8,herpHeU8,bodHeU8,leiHeU8,hersWiU8,leiWiU8,bodWiU8,herpWiU8,schWiU8,kotWiU8,morWiU8,heiWiU8,janWiU8,aleWiU8,weiWiU8,rosWiU8,berWiU8,volWiU8,gesWiU8,panWiU8,oslWiU8,fraWiU8,resWiU8,hersPaU8,leiPaU8,bodPaU8,herpPaU8,schPaU8,kotPaU8,morPaU8,heiPaU8,janPaU8,alePaU8,weiPaU8,rosPaU8,berPaU8,volPaU8,gesPaU8,panPaU8,oslPaU8,fraPaU8,resPaU8,parWiU8,linWiU8,karWiU8,ratWiU8
     ]
+
 
 
 };

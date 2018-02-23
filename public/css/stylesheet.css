@@ -63,8 +63,11 @@
     margin-left: 66px;
 }
 p {
-    font-family: "audrey";
+    font-family: "AVENIR";
 
+}
+input {
+    font-family: "AVENIR";
 }
 
 
@@ -131,9 +134,50 @@ svg {
 
 #submit {
     font-size: 20px;
-    margin-top: 5px;
+    margin-top: 10px;
+    /* color: rgb(61, 139, 162); */
+    /* border: solid black 2px; */
+    background-color: #f0d724;
+    font-family: "AVENIR";
+    cursor: pointer;
+    width: 110px;
+    overflow: hidden;
+    transition: all 200ms ease;
+    position: relative;
 
 }
+
+ #submit:hover {
+    /* border: solid #f0d724 2px; */
+    background-color: black;
+    color: #f0d724;
+}
+
+#submit:focus {
+     outline-width: 0;
+}
+
+/*
+.no-touch .hi-icon-effect-6 .hi-icon:hover:before {
+	animation: spinAround 2s linear infinite;
+}
+
+.menu .menuitem:hover .menu {
+    display: block;
+    float: left;
+    // likely need to set top & left
+} */
+/* #submit:hover .fa-train {
+    left: 10px;
+}
+.fa-train {
+    position: absolute;
+} */
+
+/*
+#submit:hover {
+  width: 200px;
+} */
 
 #westhafen {
     left: 38.452%;
@@ -169,7 +213,7 @@ svg {
 }
 
 .destination-container {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 #destinationResults {
 
@@ -210,6 +254,29 @@ header {
     position: relative;
     display: inline-block;
 
+}
+
+#lightsonoff {
+    position: absolute;
+    left: 95%;
+    top: 1vh;
+    width: 50px;
+    height: 25px;
+    cursor: pointer;
+    font-family: "avenir";
+    font-size: 10px;
+    background-color: white;
+    border: solid 2px black;
+
+}
+#lightsonoff:hover {
+    color: white;
+    background-color: black;
+    border: white 2px solid;
+}
+
+#lightsonoff:focus {
+     outline-width: 0;
 }
 
 
