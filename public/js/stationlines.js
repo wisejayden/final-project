@@ -3037,14 +3037,284 @@ const bunHaU55= {
     direction: "S+U Hauptbahnhof"
 };
 
+// s41
 
 
+// const
+
+const ges41 = {
+    path: $('.gesundbrunnen-schonhauser_allee-41'),
+    name: "S+U Gesundbrunnen",
+    direction: "Ringbahn S 41"
+}
+const sch41 = {
+    path: $('.schonhauser_allee-prenzlauer_allee-41'),
+    name: "S+U Schönhauser Allee",
+    direction: "Ringbahn S 41"
+}
+const pre41 = {
+    path: $('.prenzlauer_allee-greifswalder_str-41'),
+    name: "S Prenzlauer Allee",
+    direction: "Ringbahn S 41"
+}
+const gre41 = {
+    path: $('.greifswalder_str-lansberger_allee-41'),
+    name: "S Greifswalder Str.",
+    direction: "Ringbahn S 41"
+}
+const lan41 = {
+    path: $('.lansberger_allee-storkower_str-41'),
+    name: "S Landsberger Allee",
+    direction: "Ringbahn S 41"
+}
+const sto41 = {
+    path: $('.storkower_str-frankfurter_allee-41'),
+    name: "S Storkower Str",
+    direction: "Ringbahn S 41"
+}
+const fran_all41 = {
+    path: $('.frankfurter_allee-ostkreuz-41'),
+    name: "S+U Frankfurter Allee",
+    direction: "Ringbahn S 41"
+}
+const ost41 = {
+    path: $('.ostkreuz-treptower_park-41'),
+    name: "S Ostkreuz",
+    direction: "Ringbahn S 41"
+}
+const trep41 = {
+    path: $('.treptower_park-sonnenallee-41'),
+    name: "S Treptower Park",
+    direction: "Ringbahn S 41"
+}
+const son41 = {
+    path: $('.sonnenallee-neukolln-41'),
+    name: "S Sonnenallee",
+    direction: "Ringbahn S 41"
+}
+const neuk41 = {
+    path: $('.neukolln-hermannstr-41'),
+    name: "S+U Neukölln",
+    direction: "Ringbahn S 41"
+}
+const herman41 = {
+    path: $('.hermannstr-tempelhof-41'),
+    name: "S+U Hermannstr",
+    direction: "Ringbahn S 41"
+}
+const tem41 = {
+    path: $('.tempelhof-sudkreuz-41'),
+    name: "S+U Tempelhof",
+    direction: "Ringbahn S 41"
+}
+const sud41 = {
+    path: $('.sudkreuz-schoneberg-41'),
+    name: "S Südkreuz",
+    direction: "Ringbahn S 41"
+}
+const schon41 = {
+    path: $('.schoneberg-innsbrucker_platz-41'),
+    name: "S Schöneberg",
+    direction: "Ringbahn S 41"
+}
+const inn41 = {
+    path: $('.innsbrucker_platz-bundesplatz-41'),
+    name: "S+U Innsbrucker Platz",
+    direction: "Ringbahn S 41"
+}
+const bun41 = {
+    path: $('.bundesplatz-heidelberger_platz-41'),
+    name: "S+U Bundesplatz",
+    direction: "Ringbahn S 41"
+}
+const heid41 = {
+    path: $('.heidelberger_platz-hohenzollerndamm-41'),
+    name: "S+U Heidelberger Platz",
+    direction: "Ringbahn S 41"
+}
+const hohen41 = {
+    path: $('.hohenzollerndamm-halensee-41'),
+    name: "S Hohenzollerndamm",
+    direction: "Ringbahn S 41"
+}
+const hal41 = {
+    path: $('.halensee-westkreuz-41'),
+    name: "S Halensee",
+    direction: "Ringbahn S 41"
+}
+const west41 = {
+    path: $('.westkreuz-messe_nord-41'),
+    name: "S Westkreuz",
+    direction: "Ringbahn S 41"
+}
+const messe41 = {
+    path: $('.messe_nord-westend-41'),
+    name: "S Messe Nord/ICC",
+    direction: "Ringbahn S 41"
+}
+const westend41 = {
+    path: $('.westend-jungfernheide-41'),
+    name: "S Westend",
+    direction: "Ringbahn S 41"
+}
+const jung41 = {
+    path: $('.jungfernheide-beusselstr-41'),
+    name: "S+U Jungfernheide",
+    direction: "Ringbahn S 41"
+}
+const beu41 = {
+    path: $('.beusselstr-westhafen-41'),
+    name: "S Beusselstr",
+    direction: "Ringbahn S 41"
+}
+const wehafe41 = {
+    path: $('.westhafen-wedding-41'),
+    name: "S+U Westhafen",
+    direction: "Ringbahn S 41"
+}
+const weddi41 = {
+    path: $('.wedding-gesundbrunnen-41'),
+    name: "S+U Wedding",
+    direction: "Ringbahn S 41"
+}
 
 
+const ges42 = {
+    path: $('.gesundbrunnen-wedding-42'),
+    name: "S+U Gesundbrunnen",
+    direction: "Ringbahn S 42"
+}
 
-
-
-
+const wed42 = {
+    path: $('.wedding-westhafen-42'),
+    name: "S+U Wedding",
+    direction: "Ringbahn S 42"
+}
+const westha42 = {
+    path: $('.westhafen-beusselstr-42'),
+    name: "S+U Westhafen",
+    direction: "Ringbahn S 42"
+}
+const beu42 = {
+    path: $('.beusselstr-jungfernheide-42'),
+    name: "S Beusselstr",
+    direction: "Ringbahn S 42"
+}
+const jung42 = {
+    path: $('.jungfernheide-westend-42'),
+    name: "S+U Jungfernheide",
+    direction: "Ringbahn S 42"
+}
+const westend42 = {
+    path: $('.westend-jungfernheide'),
+    name: "S Westend",
+    direction: "Ringbahn S 42"
+}
+const messe42 = {
+    path: $('.messe_nord-westkreuz-42'),
+    name: "S Messe Nord/ICC",
+    direction: "Ringbahn S 42"
+}
+const westkre42 = {
+    path: $('.westkreuz-halensee-42'),
+    name: "S Westkreuz",
+    direction: "Ringbahn S 42"
+}
+const halen42 = {
+    path: $('.halensee-hohenzollerndamm-42'),
+    name: "S Halensee",
+    direction: "Ringbahn S 42"
+}
+const hohenzoll42 = {
+    path: $('.hohenzollerndamm-heidelberger_platz-42'),
+    name: "S Hohenzollerndamm",
+    direction: "Ringbahn S 42"
+}
+const heid42 = {
+    path: $('.heidelberger_platz-bundesplatz-42'),
+    name: "S+U Heidelberger Platz",
+    direction: "Ringbahn S 42"
+}
+const bund42 = {
+    path: $('.bundesplatz-innsbrucker_platz-42'),
+    name: "S+U Bundesplatz",
+    direction: "Ringbahn S 42"
+}
+const inn42 = {
+    path: $('.innsbrucker_platz-schoneberg-42'),
+    name: "S+U Innsbrucker Platz",
+    direction: "Ringbahn S 42"
+}
+const schon42 = {
+    path: $('.schoneberg-sudkreuz-42'),
+    name: "S Schöneberg",
+    direction: "Ringbahn S 42"
+}
+const sud42 = {
+    path: $('.sudkreuz-tempelhof-42'),
+    name: "S Südkreuz",
+    direction: "Ringbahn S 42"
+}
+const tem42 = {
+    path: $('.tempelhof-hermannstr-42'),
+    name: "S+U Tempelhof",
+    direction: "Ringbahn S 42"
+}
+const hermann42 = {
+    path: $('.hermannstr-neukolln-42'),
+    name: "S+U Hermannstr",
+    direction: "Ringbahn S 42"
+}
+const neuk42 = {
+    path: $('.neukolln-sonnenallee-42'),
+    name: "S+U Neukölln",
+    direction: "Ringbahn S 42"
+}
+const son42 = {
+    path: $('.sonnenallee-treptower_park-42'),
+    name: "S Sonnenallee",
+    direction: "Ringbahn S 42"
+}
+const trep42 = {
+    path: $('.treptower_park-ostkreuz-42'),
+    name: "S Treptower Park",
+    direction: "Ringbahn S 42"
+}
+const ostk42 = {
+    path: $('.ostkreuz-frankfurter_allee-42'),
+    name: "S Ostkreuz",
+    direction: "Ringbahn S 42"
+}
+const frank_al42 = {
+    path: $('.frankfurter_allee-storkower_str-42'),
+    name: "S+U Frankfurter Allee",
+    direction: "Ringbahn S 42"
+}
+const stork42 = {
+    path: $('.storkower_str-lansberger_allee-42'),
+    name: "S Storkower Str",
+    direction: "Ringbahn S 42"
+}
+const land42 = {
+    path: $('.lansberger_allee-greifswalder_str-42'),
+    name: "S Landsberger Allee",
+    direction: "Ringbahn S 42"
+}
+const greif42 = {
+    path: $('.greifswalder_str-prenzlauer_allee-42'),
+    name: "S Greifswalder Str.",
+    direction: "Ringbahn S 42"
+}
+const prenz42 = {
+    path: $('.prenzlauer_allee-schonhauser_allee-42'),
+    name: "S Prenzlauer Allee",
+    direction: "Ringbahn S 42"
+}
+const schonhau42 = {
+    path: $('.schonhauser_allee-gesundbrunnen-42'),
+    name: "S+U Schönhauser Allee",
+    direction: "Ringbahn S 42"
+}
 
 
 
@@ -3095,6 +3365,12 @@ const allStationLines = {
     ],
     U55: [
         hauBrU55,bunBrU55,braHaU55,bunHaU55
+    ],
+    S41: [
+        ges41,sch41,pre41,gre41,lan41,sto41,fran_all41,ost41,trep41,son41,neuk41,herman41,tem41,sud41,schon41,inn41,bun41,heid41,hohen41,hal41,west41,messe41,westend41,jung41,beu41,wehafe41,weddi41
+    ],
+    S42: [
+        ges42,wed42,westha42,beu42,jung42,westend42,messe42,westkre42,halen42,hohenzoll42,heid42,bund42,inn42,schon42,sud42,tem42,hermann42,neuk42,son42,trep42,ostk42,frank_al42,stork42,land42,greif42,prenz42,schonhau42
     ]
 
 };

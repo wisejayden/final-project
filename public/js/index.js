@@ -1093,8 +1093,8 @@ for (var i = 0; i < pathEls.length; i++) {
     var intro = anime({
         targets: pathEl,
         strokeDashoffset: [offset, 0],
-        duration: anime.random(1000, 2000),
-        delay: anime.random(0, 1000),
+        duration: anime.random(6000, 20000),
+        delay: anime.random(100, 2000),
         loop: false,
         direction: 'alternate',
         easing: 'easeInOutSine',
@@ -1181,44 +1181,6 @@ lightsButton.on('click', function() {
     }
 
 });
-
-
-// $(window).ready(function() {
-//     var intro;
-//     $(document).on('click', function(e) {
-//         // e.preventDefault();
-//         console.log(intro.pause());
-//         intro.pause();
-//     });
-//
-//
-// });
-
-//
-// page.on('click', function() {
-//     for (var i = 0; i < pathEls.length; i++) {
-//         // console.log("individualTrainLines", individualTrainLines);
-//
-//         var pathEl = pathEls[i];
-//         var offset = anime.setDashoffset(pathEl);
-//         pathEl.setAttribute('stroke-dashoffset', offset);
-//         anime({
-//             targets: pathEl,
-//             strokeDashoffset: [offset, 0],
-//             duration: anime.random(1000, 3000),
-//             delay: anime.random(0, 2000),
-//             loop: false,
-//             direction: 'alternate',
-//             easing: 'easeInOutSine',
-//             autoplay: false
-//         });
-//     }
-// })
-
-
-
-
-
 
 // var stations = import('./stations.json');
 // 8 is = to backspace
@@ -1603,11 +1565,7 @@ function makeThemLinesMove(allTravelInformation, journeyNumber) {
             easing: 'easeInOutSine',
             autoplay: true
         });
-}
-
-
-
-
+    }
 }
 
 function findMatchingTrainLines(currentJourney) {
