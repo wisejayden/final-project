@@ -1003,13 +1003,6 @@ var stations =
 
 
 
-// $( document ).ready()
-console.log("Trying to log from other js file", allStationLines);
-
-
-
-var overlay = $('#overlay');
-var canvas = document.getElementById('canvas');
 var submit = $('#submit');
 var origin = $('#origin');
 var destination = $('#destination');
@@ -1038,35 +1031,8 @@ var lightsOff = true;
 
 
 
-
-// button.on('click', function(e) {
-//     console.log("button click");
-//     console.log(e.target.name);
-//     if(!origin.val()) {
-//         console.log("nothing inside first field");
-//         origin.val(e.target.name);
-//     } else if(origin.val()) {
-//         destination.val(e.target.name);
-//     }
-// });
-
-
-// svg.on('click', function(e) {
-//     console.log("HI@");
-//     e.stopPropagation();
-//     if(origin.val()) {
-//         origin.val('');
-//     } else if(destination.val()) {
-//         destination.val('');
-//     }
-// });
-
-
-
-
 clickOutOfResults(origin, originResults);
 clickOutOfResults(destination, destinationResults);
-
 incrementalSearcher(origin, originResults);
 incrementalSearcher(destination, destinationResults);
 highlightResults(originResults);
@@ -1081,58 +1047,41 @@ keyDownActivity(destination, destinationResults);
 
 
 
-
+//Intro animation
 for (var i = 0; i < pathEls.length; i++) {
-    // console.log("individualTrainLines", individualTrainLines);
-
     var pathEl = pathEls[i];
     var offset = anime.setDashoffset(pathEl);
     pathEl.setAttribute('stroke-dashoffset', offset);
-
-
     var intro = anime({
         targets: pathEl,
         strokeDashoffset: [offset, 0],
-        duration: anime.random(6000, 20000),
+        duration: anime.random(6000, 15000),
         delay: anime.random(100, 2000),
         loop: false,
         direction: 'alternate',
         easing: 'easeInOutSine',
         autoplay: true
     });
-
 }
 
-
+//On map click, hide individual coloured lines
 svg.on('click', function() {
-    console.log("HI@");
     hiddenPaths.addClass('hide');
-
-
 });
 
+// 'Lights' button, swapping background and outline colours.
 lightsButton.on('click', function() {
-
-
-    console.log("log lightsOff", lightsOff);
-
     if (lightsOff) {
-        console.log("turning lights on");
         $('body, html').css('background-color', 'white');
         mapOutline.css('stroke', '#000000');
         originContainer.css('color', '#000000');
         destinationContainer.css('color', '#000000');
-
         hiddenPaths.removeClass('hide');
 
-
         for (var i = 0; i < pathEls.length; i++) {
-            // console.log("individualTrainLines", individualTrainLines);
-
             var pathEl = pathEls[i];
             var offset = anime.setDashoffset(pathEl);
             pathEl.setAttribute('stroke-dashoffset', offset);
-
 
             var intro = anime({
                 targets: pathEl,
@@ -1144,11 +1093,10 @@ lightsButton.on('click', function() {
                 easing: 'easeInOutSine',
                 autoplay: true
             });
-
         }
         lightsOff = false;
+
     } else {
-        console.log("turning lights off");
         hiddenPaths.removeClass('hide');
         $('body, html').css('background-color', '#242426');
         mapOutline.css('stroke', '#ffffff');
@@ -1156,7 +1104,6 @@ lightsButton.on('click', function() {
         destinationContainer.css('color', '#ffffff');
 
         for (var k = 0; k < pathEls.length; k++) {
-            // console.log("individualTrainLines", individualTrainLines);
 
             var pathEl = pathEls[k];
             var offset = anime.setDashoffset(pathEl);
@@ -1173,21 +1120,16 @@ lightsButton.on('click', function() {
                 easing: 'easeInOutSine',
                 autoplay: true
             });
-
         }
-
-
         lightsOff = true;
     }
-
 });
 
-// var stations = import('./stations.json');
-// 8 is = to backspace
+
+
 function incrementalSearcher (inputField, inputFieldResults) {
     inputField.on('input', function(e) {
         var val = e.target.value;
-
         val = val.replace(/ü/gi, 'u');
         val = val.replace(/ö/gi, 'o');
         val = val.replace(/ä/gi, 'a');
@@ -1195,13 +1137,9 @@ function incrementalSearcher (inputField, inputFieldResults) {
         val = val.replace(/-/gi, ' ');
 
         if(!e.target.value) {
-
             inputFieldResults.empty();
             return;
         }
-
-
-
         var matches = [];
         for( var key in stations) {
             if(stations[key].name.toLowerCase().indexOf(val.toLowerCase()) == 0) {
@@ -1214,23 +1152,20 @@ function incrementalSearcher (inputField, inputFieldResults) {
             }
 
         }
-
-
         var result = '';
         for (var i = 0; i < matches.length; i++) {
             result += '<div class="' + inputField.attr('name') + ' ' + 'singleresult">' + matches[i] + '</div>';
         }
         inputFieldResults.html(result).removeClass('hidden');
-
-
-
     });
 }
+//When clicking outside of input, empty fields.
 function clickOutOfResults(inputField, inputFieldResults) {
     inputField.on('blur', function() {
         inputFieldResults.empty();
     });
 }
+
 function highlightResults (inputFieldResults) {
     inputFieldResults.on('mouseover', function(e) {
         $('.highlight').removeClass('highlight');
@@ -1243,6 +1178,7 @@ function resultsClick (inputField, inputFieldResults) {
         inputFieldResults.addClass('hidden');
     });
 }
+//Add arrow key functionality
 function keyDownActivity(inputField, inputFieldResults) {
     inputField.on('keydown', function(e) {
         singleResult = $('.singleresult');
@@ -1252,18 +1188,13 @@ function keyDownActivity(inputField, inputFieldResults) {
                 break;
             }
         }
-
-
         var current = i;
         singleResult.removeClass('highlight');
-
         if(e.which == 38) {
-            console.log("key 38 - UP");
             if (i > 0) {
                 singleResult.eq(i-1).addClass('highlight');
             }
         } else if (e.which == 40) {
-            console.log("key 40 - DOWN");
 
             if(i < singleResult.length-1) {
                 singleResult.eq(i+1).addClass('highlight');
@@ -1273,21 +1204,11 @@ function keyDownActivity(inputField, inputFieldResults) {
             }
         }
         if(e.which == 13) {
-            console.log("key 13 - ENTER");
             inputField.val(singleResult.eq(i).html());
-            // inputFieldResults.addClass('hidden');
             inputFieldResults.empty();
-
         }
-
     });
 }
-
-
-
-
-
-
 
 
 submit.on('click', function() {
@@ -1302,22 +1223,15 @@ submit.on('click', function() {
         }
     }
 
-
+    //Easter egg
     if(destination.val().toLowerCase() == 'the party') {
         hiddenPaths.removeClass('hide');
-
-
-
         for (var i = 0; i < pathEls.length; i++) {
-            // console.log("individualTrainLines", individualTrainLines);
             var randomColor = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
             pathEls[i].setAttribute('style', 'fill:' + randomColor);
-
             var pathEl = pathEls[i];
             var offset = anime.setDashoffset(pathEl);
             pathEl.setAttribute('stroke-dashoffset', offset);
-
-
             anime({
                 targets: pathEl,
                 strokeDashoffset: [offset, 0],
@@ -1333,7 +1247,6 @@ submit.on('click', function() {
         }
         function callSetTimeout() {
             setTimeout(function() {
-                console.log("change colour function");
                 var randomColor = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
                 var first = true;
                 if(first) {
@@ -1347,80 +1260,54 @@ submit.on('click', function() {
                         first = true;
                     }
                 }
-
-                // for (var i = 0; i < pathEls.length; i++) {
-                //     var first = true;
-                //     if(first) {
-                //         pathEls[i].setAttribute('style', 'stroke:' + randomColor);
-                //         first = false;
-                //     } else {
-                //         pathEls[i].setAttribute('style', 'fill:' + randomColor);
-                //         first = true;
-                //     }
-                //
-                // }
-
                 callSetTimeout();
             }, 200);
         }
 
-
-
+        //Normal functionality, ajax call to retrive data
     } else {
         $.ajax({
             url: 'https://2.vbb.transport.rest/journeys?from=' + searchOrigin + '&to=' + searchDestination + '&tram=false&bus=false&express=false&regional=false',
             headers: {
             },
             success: function(data) {
-                console.log("SUCCESS!");
                 var departure = [];
-                // var departureTimes;
                 var departureHtml = '';
                 var legsInfo = [];
                 var legsHtml = '';
 
+                //Organise data retreived from API. Departure information is available for the next 5 trains, and each train may have several different legs (or stops).
                 for (var i = 0; i < data.length; i++) {
                     departure.push({departure: data[i].departure, legs: data[i].legs});
                 }
 
-
+                //Check if train is cancelled, otherwise make time and date more readable
                 for (var d = 0; d < departure.length; d++) {
                     if(departure[d].departure == null) {
                         departure[d].departure = 'Cancelled'
                     } else {
                         departure[d].departure = new Date(departure[d].departure).toLocaleTimeString();
                         departure[d].departure = departure[d].departure.slice(0, -3);
-
                     }
                 }
 
+                //Create custom object containing all relevant journey information to be used for the animation function. Data pulled from API.
                 var allLegInformation = {
                 };
 
+                //Loop through departure, creating html divs containing each journey, including all leg information to include as text information on the side.
                 for (var q = 0; q < departure.length; q++) {
-                    for (var p = 0; p < departure.length; p++) {
-
-                        if(departure[p].legs[0].direction) {
-                            // console.log("all the different directions", departure[p].legs[0].direction);
-                            // console.log("And the attached lines", departure[p].legs[0].line.name);
-                        }
-
-                    }
-
                     departureHtml +='<div class="departure-times ' + [q] + '" data-myval="' + [q] +  '">' + departure[q].departure + '</div>';
                     allLegInformation["journey" + q] = [];
-
                     departureHtml += '<div class="leg-times-container hidden">'
                     for (var l = 0; l < departure[q].legs.length; l++) {
                         var trainLine;
                         var oneLeg = departure[q].legs[l];
                         if(departure[q] != null) {
                             if(oneLeg.mode) {
-                                console.log("walking");
                                 trainLine = "Walking"
                             } else {
                                 trainLine = oneLeg.line.name;
-
                             }
 
 
@@ -1428,12 +1315,8 @@ submit.on('click', function() {
                             oneLeg.departure = oneLeg.departure.slice(0, -3);
                             oneLeg.arrival = new Date(oneLeg.arrival).toLocaleTimeString();
                             oneLeg.arrival = oneLeg.arrival.slice(0, -3);
-                            console.log("DEPARTURE INFO", oneLeg);
                             departureHtml +='<div class="leg-times">From ' + oneLeg.origin.name + ' (' + oneLeg.departure + ') on the ' + trainLine + '<br>To ' + oneLeg.destination.name + ' (' + oneLeg.arrival + ')</div>';
 
-
-
-                            // console.log("Look at trainlines", trainLine);
                             allLegInformation["journey" + q].push({origin: oneLeg.origin.name, line: trainLine, destination: oneLeg.destination.name, direction: oneLeg.direction})
 
                         }
@@ -1441,116 +1324,46 @@ submit.on('click', function() {
                     departureHtml += '</div>'
                 }
                 timetableInformation.html(departureHtml);
-                console.log("Log my brand spankin new object", allLegInformation);
-
+                //Animate first departure
                 makeThemLinesMove(allLegInformation, 0);
-
-                // if(departure[0].legs[0].line.name) {
-                //     var trainLine = departure[0].legs[0].line.name;
-                // } else {
-                //     trainLine = "Walking"
-                // }
                 var trainDirection = departure[0].legs[0].direction;
 
-
-
-
-
-
-
+                //When clicking on journey information on the side, show all relevant information, displayed in a random colour, and calls function to animate all legs
                 var clicked = false;
-
-                $(".departure-times").on('click', function(e) {
-                    console.log("removing hidden class from legs", $(this).attr('data-myval'));
+                $(".departure-times").on('click', function() {
                     var randomColor = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
-
                     if($(this).next().hasClass('hidden')) {
-                        console.log("Trying to show", e.target, $(this));
                         $(this).next().removeClass('hidden');
-
-                        // $(this).next().css('color:', randomColor);
                         $(this).next().css('color', randomColor);
-
-
-
                         clicked = false;
-                        console.log("Inside click", allLegInformation);
                         makeThemLinesMove(allLegInformation, $(this).attr('data-myval'));
                     } else {
-                        console.log("HELLO");
-                        console.log("Trying to hide", e.target, $(this));
                         $(this).next().addClass('hidden');
                         clicked = true;
                     }
                 });
-
-
-
-                // if(trainLine == 'U1' && trainDirection == 'S+U Warschauer Str.') {
-                //     console.log("Right direction!");
-                //     for (var key in u1DirWar) {
-                //         if (u1DirWar.hasOwnProperty(key)) {
-                //             console.log("Please animate");
-                //             var animateLine = u1DirWar[key].div[0];
-                //
-                //             animateLine.classList.remove('hide');
-                //             console.log("Looking at div", animateLine);
-                //             var offset = anime.setDashoffset(animateLine);
-                //             animateLine.setAttribute('stroke-dashoffset', offset);
-                //             anime({
-                //                 targets: animateLine,
-                //                 strokeDashoffset: [offset, 0],
-                //                 duration: anime.random(1000, 2000),
-                //                 delay: anime.random(0, 1000),
-                //                 loop: true,
-                //                 direction: 'alternate',
-                //                 easing: 'easeInOutSine',
-                //                 autoplay: true
-                //             });
-                //         }
-                //     }
-                // }
             }
         });
     }
-
-
-
 });
 //
 
 
 
-
-//
-//
-// var {
-//     u1: [uhlandstrWar, kurfurstendammWar, wittenbergWar, nollendorWar, kurfurstenstrWar, gleisdreiWar, mockernWar, hallchesWar]
-// },
-// u2
-//
-// const uhlandstrWar = {
-//     div: $('.uhlandstr-kurfurstendamm'),
-//     name: "Uhlandstr",
-//     direction: "Warschauer Str."
-// };
+//Animation function
 function makeThemLinesMove(allTravelInformation, journeyNumber) {
+    //hide all coloured line to begin with
     for (var h = 0; h < hiddenPaths.length; h++) {
         hiddenPaths[h].classList.add('hide');
-
-    };
-
-    console.log("_______________", journeyNumber);
+    }
+    //Find current information to be passed to first function.
     var currentJourney = allTravelInformation["journey" + journeyNumber];
-    console.log("current journey, first part of the function", currentJourney);
-
-    var allMatchingLines = findMatchingTrainLines(currentJourney)
-    console.log("all Matching lines", allMatchingLines);
 
 
+    //Retrives results from the set of functions and animates the returned lines.
+    var allMatchingLines = findMatchingTrainLines(currentJourney);
 
     for (var i = 0; i < allMatchingLines.length; i++) {
-        console.log("LOOK AT HIS", allMatchingLines[i].path);
         var animateLine = allMatchingLines[i].path[0];
         animateLine.classList.remove('hide');
         var offset = anime.setDashoffset(animateLine);
@@ -1570,126 +1383,54 @@ function makeThemLinesMove(allTravelInformation, journeyNumber) {
 
 function findMatchingTrainLines(currentJourney) {
     var allMatchingLines = [];
-    console.log("first current journey", currentJourney);
-
+    //Try to match the current journeys train lines against object containing all station lines found in '/public/js/stationlines.js'
     for (var i = 0; i < currentJourney.length; i++) {
         for (var key in allStationLines) {
             if (allStationLines.hasOwnProperty(key)) {
 
-
+                //If the lines are a match, pass the current leg and the line to the next function. This will be repeated for all legs of the current journey.
                 if(currentJourney[i].line == key) {
                     var activeLines = allStationLines[key];
-
-
                     var matchingLines = organiseByDirection(currentJourney[i], activeLines);
+                    //As this is being done for each leg of the journey, results will need to be looped through and then returned as an array of results.
                     for (var k = 0; k < matchingLines.length; k++) {
                         allMatchingLines.push(matchingLines[k]);
                     }
-                    // allMatchingLines.push(currentLine);
                 }
             }
         }
     }
-    console.log("findMatchingTrainLines allMatchingLines", allMatchingLines);
     return allMatchingLines;
 }
 
-
+//Loop through active lines, sorting out only the correct lines WITH the correct direction and then pass them onto next function.
 function organiseByDirection(currentJourney, activeLines) {
-    console.log("organiseByDirection", currentJourney, activeLines);
     var matchingLinesWithCorrectDirection = [];
-    // console.log("____________", activeLines);
-    console.log("current journey", currentJourney);
-    console.log("activeLines", activeLines);
-
     for (var keykey in activeLines) {
         if (activeLines.hasOwnProperty(keykey)) {
             if (currentJourney.direction == activeLines[keykey].direction) {
-                // console.log("activeLines[keykey]", activeLines[keykey]);
                 matchingLinesWithCorrectDirection.push(activeLines[keykey]);
-
-
-
             }
         }
     }
-    console.log("matchingLinesWithCorrectDirection", matchingLinesWithCorrectDirection);
     var allMatchingLines = findDepartureStops(currentJourney, matchingLinesWithCorrectDirection);
     return allMatchingLines;
 }
 
+
 function findDepartureStops(currentJourney, activeLines) {
-
-    console.log("Active lines_______________", activeLines);
-
-    console.log("Current journey____________", currentJourney.destination);
-
+    //Find origin index point inside array and then remove all stations that precede it.
     var idx = activeLines.findIndex(function(item) {
         return item.name == currentJourney.origin;
     });
-    console.log("idx", idx);
-
-
     var findStartStation = activeLines.slice(idx);
-    console.log("findStartStation", findStartStation);
 
-
+    //Do the same for the destination.
     var index = findStartStation.findIndex(function(item) {
-        console.log("Item name", item.name);
-        console.log("Log the destination", currentJourney.destination);
-        console.log("Are they equal?", item.name == currentJourney.destination);
-
         return item.name == currentJourney.destination;
 
     });
-    console.log("index?", index);
     var allMatchingLines = findStartStation.slice(0, index);
-    console.log("These are the correct stations_________________________________", allMatchingLines);
-
+    //Return all matchingLines, ready for animation!
     return allMatchingLines;
-
-
-
 }
-
-
-
-
-
-    // console.log("Do I get back my array of lines?________", arrayOfLines);
-    //filter array by everythng after destination.
-    //animate filtered arrays.
-
-
-
-
-// $(document).on('mousemove', function(e) {
-//     var offsetX = e.offsetX - 174;
-//     var offsetY = e.offsetY - 79;
-//     console.log(offsetX, offsetY);
-// });
-//
-
-var pathEls = document.getElementsByClassName('path1');
-
-//
-
- var pathEls = document.querySelectorAll('path');
-//
-// for (var i = 0; i < pathEls.length; i++) {
-//     console.log("pathels", pathEls[i]);
-//
-//   var pathEl = pathEls[i];
-//   var offset = anime.setDashoffset(pathEl);
-//   pathEl.setAttribute('stroke-dashoffset', offset);
-//   anime({
-//     targets: pathEl,
-//     strokeDashoffset: [offset, 0],
-//     duration: anime.random(1000, 3000),
-//     delay: anime.random(0, 2000),
-//     loop: true,
-//     direction: 'alternate',
-//     easing: 'easeInOutSine',
-//     autoplay: true
-//   });
-// }
