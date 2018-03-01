@@ -1,3 +1,3 @@
 # final-project
 Final project Spiced Academy
-![Picture](/public/images/introscreen.gif)
+![Picture](/public/images/introscene.gif)
