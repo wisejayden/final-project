@@ -1055,9 +1055,9 @@ for (var i = 0; i < pathEls.length; i++) {
     var intro = anime({
         targets: pathEl,
         strokeDashoffset: [offset, 0],
-        duration: anime.random(6000, 15000),
-        delay: anime.random(100, 2000),
-        loop: false,
+        duration: anime.random(6000, 10000),
+        delay: anime.random(100, 1000),
+        loop: true,
         direction: 'alternate',
         easing: 'easeInOutSine',
         autoplay: true
