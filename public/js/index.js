@@ -1057,7 +1057,7 @@ for (var i = 0; i < pathEls.length; i++) {
         strokeDashoffset: [offset, 0],
         duration: anime.random(6000, 10000),
         delay: anime.random(100, 1000),
-        loop: true,
+        loop: false,
         direction: 'alternate',
         easing: 'easeInOutSine',
         autoplay: true

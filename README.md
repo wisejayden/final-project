@@ -9,4 +9,9 @@
 ## Synopsis
 I created this project during my final week of study at the SPICED Academy Berlin.
 
-![Picture](/public/images/intro.gif)
+<p align="center"><img src="/public/images/intro.gif"  width="800"/></p>
+<br>
+<p align="center"><img src="/public/images/searchfunctionality.gif"  width="800"/></p>
+<br>
+<p align="center"><img src="/public/images/lightsfunction.gif"  width="800"/></p>
+<br>
