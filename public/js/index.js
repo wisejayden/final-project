@@ -1008,27 +1008,16 @@ var origin = $('#origin');
 var destination = $('#destination');
 var originResults = $('#origin-results');
 var destinationResults = $('#destination-results');
-var highlight = $('.highlight');
-var page = $('html');
 var svg = $('svg');
-var singleOriginResult = $('.origin-singleresult');
 var originContainer = $('.origin-container');
 var destinationContainer = $('.destination-container');
-
-var singleDestinationResult = $('.destination-singleresult');
 var singleResult = $('.singleresult');
 var timetableInformation = $('.timetable-information');
-var departureTimesDiv = $('.departure-times');
-var legTimes = $('.leg-times');
-var button = $('button');
-var individualTrainLines = $("#individualtrainlines");
 var pathEls = document.querySelectorAll('path');
 var hiddenPaths = $('.ind');
 var lightsButton = $('#lightsonoff');
 var mapOutline = $('.whitebackground');
 var lightsOff = true;
-
-
 
 
 clickOutOfResults(origin, originResults);
@@ -1041,8 +1030,6 @@ resultsClick(origin, originResults);
 resultsClick(destination, destinationResults);
 keyDownActivity(origin, originResults);
 keyDownActivity(destination, destinationResults);
-
-
 
 
 
@@ -1148,7 +1135,7 @@ function incrementalSearcher (inputField, inputFieldResults) {
                     break;
                 }
             } else {
-                inputFieldResults.html('No results')
+                inputFieldResults.html('No results');
             }
 
         }
@@ -1188,14 +1175,12 @@ function keyDownActivity(inputField, inputFieldResults) {
                 break;
             }
         }
-        var current = i;
         singleResult.removeClass('highlight');
         if(e.which == 38) {
             if (i > 0) {
                 singleResult.eq(i-1).addClass('highlight');
             }
         } else if (e.which == 40) {
-
             if(i < singleResult.length-1) {
                 singleResult.eq(i+1).addClass('highlight');
             }
@@ -1273,8 +1258,6 @@ submit.on('click', function() {
             success: function(data) {
                 var departure = [];
                 var departureHtml = '';
-                var legsInfo = [];
-                var legsHtml = '';
 
                 //Organise data retreived from API. Departure information is available for the next 5 trains, and each train may have several different legs (or stops).
                 for (var i = 0; i < data.length; i++) {
@@ -1284,7 +1267,7 @@ submit.on('click', function() {
                 //Check if train is cancelled, otherwise make time and date more readable
                 for (var d = 0; d < departure.length; d++) {
                     if(departure[d].departure == null) {
-                        departure[d].departure = 'Cancelled'
+                        departure[d].departure = 'Cancelled';
                     } else {
                         departure[d].departure = new Date(departure[d].departure).toLocaleTimeString();
                         departure[d].departure = departure[d].departure.slice(0, -3);
@@ -1299,13 +1282,13 @@ submit.on('click', function() {
                 for (var q = 0; q < departure.length; q++) {
                     departureHtml +='<div class="departure-times ' + [q] + '" data-myval="' + [q] +  '">' + departure[q].departure + '</div>';
                     allLegInformation["journey" + q] = [];
-                    departureHtml += '<div class="leg-times-container hidden">'
+                    departureHtml += '<div class="leg-times-container hidden">';
                     for (var l = 0; l < departure[q].legs.length; l++) {
                         var trainLine;
                         var oneLeg = departure[q].legs[l];
                         if(departure[q] != null) {
                             if(oneLeg.mode) {
-                                trainLine = "Walking"
+                                trainLine = "Walking";
                             } else {
                                 trainLine = oneLeg.line.name;
                             }
@@ -1317,16 +1300,15 @@ submit.on('click', function() {
                             oneLeg.arrival = oneLeg.arrival.slice(0, -3);
                             departureHtml +='<div class="leg-times">From ' + oneLeg.origin.name + ' (' + oneLeg.departure + ') on the ' + trainLine + '<br>To ' + oneLeg.destination.name + ' (' + oneLeg.arrival + ')</div>';
 
-                            allLegInformation["journey" + q].push({origin: oneLeg.origin.name, line: trainLine, destination: oneLeg.destination.name, direction: oneLeg.direction})
+                            allLegInformation["journey" + q].push({origin: oneLeg.origin.name, line: trainLine, destination: oneLeg.destination.name, direction: oneLeg.direction});
 
                         }
                     }
-                    departureHtml += '</div>'
+                    departureHtml += '</div>';
                 }
                 timetableInformation.html(departureHtml);
                 //Animate first departure
                 makeThemLinesMove(allLegInformation, 0);
-                var trainDirection = departure[0].legs[0].direction;
 
                 //When clicking on journey information on the side, show all relevant information, displayed in a random colour, and calls function to animate all legs
                 var clicked = false;
