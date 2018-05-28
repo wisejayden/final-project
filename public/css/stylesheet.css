@@ -76,24 +76,18 @@ input {
   padding: 0;
   box-sizing: border-box;
 }
-/* <div id="overlay"></div> */
 
 #overlay {
     /* background-image: url('http://www.sebastian-pertsch.de/wp-content/uploads/bvg_wifi_map_wlan_karte_2017.png'); */
     /* background-image: url('https://theurbangeographer.files.wordpress.com/2011/12/mapa-berlin-web.jpeg'); */
-
     opacity: 0.1;
     filter: alpha(opacity = 30);
     background-size: contain;
     height: 930px;
-    /* width: 1745px; */
     width: 1280px;
     z-index: 5;
-
     position: absolute;
     top: 0;
-    /* margin-top: 50px; */
-
 }
 
 
@@ -104,32 +98,16 @@ input {
 svg {
     top: 0;
     width: 100%;
-    /* height: 930px; */
-    /* height: 930px; */
-    /* width: 1280px; */
-    /* width: 1745px; */
-    /* height: 100%; */
-    /* height: 100vh; */
-    /* max-height: 100%; */
-    /* height: 930px; */
-    /* width: 1280px; */
     position: relative;
 
 }
 .station-buttons {
-    /* width: 100%; */
     width: 1280px;
     height: 930.91px;
-
-
-    /* width: 100%; */
-
-    /* width: 100vw; */
     height: 100%;
     top: 0;
     z-index: 20;
     position: absolute;
-    /* height of the image */
 }
 
 #submit {
@@ -148,7 +126,6 @@ svg {
 }
 
  #submit:hover {
-    /* border: solid #f0d724 2px; */
     background-color: black;
     color: #f0d724;
 }
@@ -156,28 +133,6 @@ svg {
 #submit:focus {
      outline-width: 0;
 }
-
-/*
-.no-touch .hi-icon-effect-6 .hi-icon:hover:before {
-	animation: spinAround 2s linear infinite;
-}
-
-.menu .menuitem:hover .menu {
-    display: block;
-    float: left;
-    // likely need to set top & left
-} */
-/* #submit:hover .fa-train {
-    left: 10px;
-}
-.fa-train {
-    position: absolute;
-} */
-
-/*
-#submit:hover {
-  width: 200px;
-} */
 
 #westhafen {
     left: 38.452%;
@@ -199,14 +154,6 @@ svg {
 .leg-times-container.hidden {
     display: none;
 }
-/* svg {
-    height: 465px;
-    width: 640px;
-} */
-
-#originResults {
-
-}
 
 #originResults.hidden {
     display: none;
@@ -215,9 +162,7 @@ svg {
 .destination-container {
     margin-top: 10px;
 }
-#destinationResults {
 
-}
 
 .timetable-information {
     position: absolute;
@@ -251,6 +196,7 @@ html,
 body,
 header {
 	background-color: #242426;
+    /* background-color: black; */
     position: relative;
     display: inline-block;
 
